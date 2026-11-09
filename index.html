@@ -1,16 +1,16 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Gira de Conciertos 104.3Fm</title><style>body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.5; background-color: #0f172a; color: #f1f5f9; margin: 0; padding: 15px; }.wrapper { max-width: 1200px; margin: 0 auto; background: #1e293b; padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }.header-container { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid #f59e0b; padding-bottom: 15px; margin-bottom: 15px; }.logo-radio { max-height: 90px; border-radius: 6px; background-color: #ffffff; padding: 4px; min-width: 90px; min-height: 40px; display: block; }.header-titles { text-align: left; flex-grow: 1; }h1 { color: #f59e0b; margin: 0; font-size: 1.8em; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }.header-meta { font-size: 0.9em; color: #fef3c7; background: #78350f; padding: 8px 12px; border-radius: 6px; display: inline-block; margin-top: 8px; border: 1px solid #b45309; }.reproductor-box { background: linear-gradient(135deg, #b45309 0%, #d97706 100%); padding: 12px 20px; border-radius: 10px; margin-bottom: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3); border: 1px solid #f59e0b; }.reproductor-box span { font-weight: bold; font-size: 1em; color: #ffffff; margin-bottom: 8px; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }.reproductor-box audio { width: 100%; max-width: 450px; outline: none; }.mes-bloque { margin-bottom: 30px; background: #0f172a; padding: 18px; border-radius: 10px; border: 1px solid #334155; }.mes-titulo { color: #f59e0b; font-size: 1.5em; font-weight: bold; border-bottom: 2px dashed #334155; padding-bottom: 8px; margin-bottom: 18px; text-transform: uppercase; }.grid-eventos { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 15px; }.evento-tarjeta { background: #1e293b; border: 1px solid #475569; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; }.evento-tarjeta:hover { transform: translateY(-3px); border-color: #f59e0b; }.evento-imagen { width: 100%; height: 140px; object-fit: cover; border-bottom: 1px solid #475569; background: #0f172a linear-gradient(135deg, #1e293b 0%, #78350f 100%); display: block; }.evento-cuerpo { padding: 12px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }.badge { background: #0f172a; color: #f59e0b; padding: 3px 8px; border-radius: 10px; font-size: 0.7em; font-weight: bold; display: inline-block; margin-bottom: 6px; border: 1px solid #f59e0b; }.fecha-tag { font-size: 0.8em; color: #94a3b8; font-weight: bold; margin-bottom: 4px; display: block; }.mes-bloque .sede-tag { font-size: 0.85em; color: #38bdf8; font-weight: bold; margin-bottom: 6px; display: block; }.mes-bloque .sede-tag a { color: #38bdf8; text-decoration: none; }.evento-nombre { color: #ffffff; font-size: 1.05em; margin: 4px 0 8px 0; font-weight: 700; line-height: 1.3; }.btn-ticket { display: block; text-align: center; padding: 8px; background-color: #d97706; color: #0f172a; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 0.9em; transition: background 0.2s; }.btn-ticket:hover { background-color: #f59e0b; }.footer-linea { border-top: 3px solid #f59e0b; margin-top: 30px; padding-top: 20px; text-align: center; color: #cbd5e1; font-size: 0.85em; }</style></head><body><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta">🤖 Agenda Automatizada | Sincronización Semanal.</div></div><img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" /></div><div class="reproductor-box"><span>📻 Escucha Radio UdeG 104.3 Fm EN VIVO 📻</span><audio controls><source src="https://stream.zeno.fm/9akhcnmh6ehvv" type="audio/mpeg">Tu navegador no soporta el elemento de audio.</audio></div><div id="calendario-contenedor"><div class="widget-clima-hora" style="display: flex; gap: 20px; margin-bottom: 25px; background: #0f172a; padding: 15px 25px; border-radius: 12px; border: 1px solid #334155; align-items: center; justify-content: space-around;">  <div style="font-size: 1.1em; color: #cbd5e1;">📍 <span>Guadalajara, Jal.</span></div>  <div style="font-size: 1.1em; color: #cbd5e1;">🌤️ Clima: <span style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">24°C</span> (Despejado)</div>  <div style="font-size: 1.1em; color: #cbd5e1;">🕒 Hora Local: <span id="reloj-dinamico-gdl" style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">--:--:--</span></div></div>
     <div class="filtros-contenedor" style="background: #0f172a; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #334155; display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
-        <div style="font-weight: bold; color: #f59e0b; margin-right: 10px;">🎯 Filtrar Cartelera:</div>
+        <div style="font-weight: bold; color: #f59e0b; margin-right: 10px;">🎯 Filtrar Cartelera GDL:</div>
         <div style="display: flex; flex-direction: column; gap: 5px;">
-            <label style="font-size: 0.8em; color: #94a3b8;">Selecciona Sede:</label>
+            <label style="font-size: 0.8em; color: #94a3b8;">Selecciona Recinto / Sede:</label>
             <select id="filtro-sede" onchange="aplicarFiltros()" style="background: #1e293b; color: #fff; border: 1px solid #475569; padding: 8px 12px; border-radius: 6px; font-weight: bold;">
-                <option value="all">-- Todas las Sedes --</option><option value="Arena Guadalajara">Arena Guadalajara</option><option value="Auditorio Telmex">Auditorio Telmex</option><option value="Conjunto Santander de Artes Escénicas">Conjunto Santander de Artes Escénicas</option><option value="Teatro Diana">Teatro Diana</option>
+                <option value="all">-- Todas las Sedes --</option><option value="Anexo Independencia">Anexo Independencia</option><option value="Arema Boletos">Arema Boletos</option><option value="Arena Guadalajara">Arena Guadalajara</option><option value="Arena VFG">Arena VFG</option><option value="Auditorio Benito Juárez">Auditorio Benito Juárez</option><option value="Auditorio Telmex">Auditorio Telmex</option><option value="Auditorio Telmex (Facebook)">Auditorio Telmex (Facebook)</option><option value="BarAmericas">BarAmericas</option><option value="BarAmericas (Directorio)">BarAmericas (Directorio)</option><option value="Boletia">Boletia</option><option value="Boletomóvil">Boletomóvil</option><option value="C3">C3</option><option value="C3 Stage">C3 Stage</option><option value="C4">C4</option><option value="CCAU">CCAU</option><option value="Casa Alcalde Cultural">Casa Alcalde Cultural</option><option value="Casa Escorza">Casa Escorza</option><option value="Casa Feria Centro Cultural">Casa Feria Centro Cultural</option><option value="Centro Cultural Bretón A.C.">Centro Cultural Bretón A.C.</option><option value="Centro Cultural San Diego">Centro Cultural San Diego</option><option value="Cineteca FICG">Cineteca FICG</option><option value="Conciertos Guadalajara">Conciertos Guadalajara</option><option value="Conciertos Guadalajara (Facebook)">Conciertos Guadalajara (Facebook)</option><option value="Conjunto Santander de Artes Escénicas">Conjunto Santander de Artes Escénicas</option><option value="Cultura Guadalajara">Cultura Guadalajara</option><option value="El Bretón Centro Cultural">El Bretón Centro Cultural</option><option value="Estadio Akron">Estadio Akron</option><option value="Explanada Estadio Banorte">Explanada Estadio Banorte</option><option value="Fever">Fever</option><option value="Foro 907 Novecientos Siete">Foro 907 Novecientos Siete</option><option value="Foro Independencia">Foro Independencia</option><option value="Foro Independencia / Anexo Independencia (Facebook)">Foro Independencia / Anexo Independencia (Facebook)</option><option value="Foro LARVA">Foro LARVA</option><option value="Foro LARVA / Cultura Guadalajara (Facebook)">Foro LARVA / Cultura Guadalajara (Facebook)</option><option value="Foro de Arte y Cultura">Foro de Arte y Cultura</option><option value="Foro de Arte y Cultura (Facebook)">Foro de Arte y Cultura (Facebook)</option><option value="Guanamor Teatro Estudio">Guanamor Teatro Estudio</option><option value="HMB Hotel Guadalajara">HMB Hotel Guadalajara</option><option value="La Escalera Centro Cultural">La Escalera Centro Cultural</option><option value="La Escalera Centro Cultural (Facebook)">La Escalera Centro Cultural (Facebook)</option><option value="Librería Carlos Fuentes">Librería Carlos Fuentes</option><option value="OCESA">OCESA</option><option value="PALCCO">PALCCO</option><option value="Palenque Fiestas de Octubre">Palenque Fiestas de Octubre</option><option value="Paraninfo Enrique Díaz de León">Paraninfo Enrique Díaz de León</option><option value="Superboletos">Superboletos</option><option value="Teatro Diana">Teatro Diana</option><option value="Teatro Diana (Facebook)">Teatro Diana (Facebook)</option><option value="Teatro Experimental de Jalisco">Teatro Experimental de Jalisco</option><option value="Teatro Guanamor">Teatro Guanamor</option><option value="TicketNow">TicketNow</option><option value="TicketOne">TicketOne</option><option value="Ticketmaster">Ticketmaster</option><option value="eTicket">eTicket</option>
             </select>
         </div>
         <div style="display: flex; flex-direction: column; gap: 5px;">
-            <label style="font-size: 0.8em; color: #94a3b8;">Selecciona Género:</label>
+            <label style="font-size: 0.8em; color: #94a3b8;">Selecciona Género Musical:</label>
             <select id="filtro-genero" onchange="aplicarFiltros()" style="background: #1e293b; color: #fff; border: 1px solid #475569; padding: 8px 12px; border-radius: 6px; font-weight: bold;">
-                <option value="all">-- Todos los Géneros --</option><option value="Conciertos">Conciertos</option><option value="Indie">Indie</option><option value="Pop">Pop</option><option value="Rock-Metal">Rock-Metal</option>
+                <option value="all">-- Todos los Géneros --</option><option value="Conciertos">Conciertos</option><option value="Electrónica">Electrónica</option><option value="Indie">Indie</option><option value="Jazz-Blues">Jazz-Blues</option><option value="Mariachi-Regional">Mariachi-Regional</option><option value="Pop">Pop</option><option value="Rock-Metal">Rock-Metal</option><option value="Sinfónico">Sinfónico</option>
             </select>
         </div>
         <button onclick="restablecerFiltros()" style="margin-top: 18px; padding: 8px 15px; background: #334155; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.2s;">Limpiar Filtros</button>
@@ -21,7 +21,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://teatrodiana.com" target="_blank">Teatro Diana</a></span>
                               <h3 class="evento-nombre">ANDRES CALAMARO</h3>
                             </div>
@@ -34,7 +34,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://teatrodiana.com" target="_blank">Teatro Diana</a></span>
                               <h3 class="evento-nombre">ESLABON ARMADO</h3>
                             </div>
@@ -47,7 +47,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://teatrodiana.com" target="_blank">Teatro Diana</a></span>
                               <h3 class="evento-nombre">EL EPISODIO PERDIDO: UN SHOW DE IMPRO</h3>
                             </div>
@@ -60,7 +60,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://teatrodiana.com" target="_blank">Teatro Diana</a></span>
                               <h3 class="evento-nombre">COMO SI PASARA UN TREN</h3>
                             </div>
@@ -73,7 +73,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://teatrodiana.com" target="_blank">Teatro Diana</a></span>
                               <h3 class="evento-nombre">TANIA MATUS</h3>
                             </div>
@@ -86,7 +86,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://teatrodiana.com" target="_blank">Teatro Diana</a></span>
                               <h3 class="evento-nombre">ALAN ARRIETA</h3>
                             </div>
@@ -99,7 +99,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://conjuntosantander.com" target="_blank">Conjunto Santander de Artes Escénicas</a></span>
                               <h3 class="evento-nombre">Rugido UDG 2026</h3>
                             </div>
@@ -112,7 +112,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://conjuntosantander.com" target="_blank">Conjunto Santander de Artes Escénicas</a></span>
                               <h3 class="evento-nombre">Edna Rendón Butchart</h3>
                             </div>
@@ -125,7 +125,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://conjuntosantander.com" target="_blank">Conjunto Santander de Artes Escénicas</a></span>
                               <h3 class="evento-nombre">Edna Rendón ButchartVoz sin límites</h3>
                             </div>
@@ -138,7 +138,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://conjuntosantander.com" target="_blank">Conjunto Santander de Artes Escénicas</a></span>
                               <h3 class="evento-nombre">Cuarteto Jalisco</h3>
                             </div>
@@ -151,7 +151,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://conjuntosantander.com" target="_blank">Conjunto Santander de Artes Escénicas</a></span>
                               <h3 class="evento-nombre">Cuarteto JaliscoDebussy & Ravel: Colores e impresiones del cuarteto francés</h3>
                             </div>
@@ -164,7 +164,7 @@
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Conciertos</span>
-                              <span class="fecha-tag">🗓️ 08 Nov 2026</span>
+                              <span class="fecha-tag">🗓️ 09 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://conjuntosantander.com" target="_blank">Conjunto Santander de Artes Escénicas</a></span>
                               <h3 class="evento-nombre">Valeria Estrella</h3>
                             </div>
@@ -172,29 +172,55 @@
                           </div>
                         </div>
                         
-                        <div class="evento-tarjeta" data-sede="Teatro Diana" data-genero="Conciertos">
-                          <img src="https://images.unsplash.com/photo-1484755560695-a4c7300c5c29?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Andrés Calamaro - Gira Oficial" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
+                        <div class="evento-tarjeta" data-sede="Teatro Diana" data-genero="Rock-Metal">
+                          <img src="https://images.unsplash.com/photo-1484755560695-a4c7300c5c29?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Andrés Calamaro - Gira Agenda" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
                           <div class="evento-cuerpo">
                             <div>
-                              <span class="badge">Conciertos</span>
+                              <span class="badge">Rock-Metal</span>
                               <span class="fecha-tag">🗓️ 11 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://teatrodiana.com" target="_blank">Teatro Diana</a></span>
-                              <h3 class="evento-nombre">Andrés Calamaro - Gira Oficial</h3>
+                              <h3 class="evento-nombre">Andrés Calamaro - Gira Agenda</h3>
                             </div>
                             <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
                           </div>
                         </div>
                         
                         <div class="evento-tarjeta" data-sede="Arena Guadalajara" data-genero="Rock-Metal">
-                          <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="God Save The Queen" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
+                          <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="God Save The Queen - Tributo" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
                           <div class="evento-cuerpo">
                             <div>
                               <span class="badge">Rock-Metal</span>
                               <span class="fecha-tag">🗓️ 14 Nov 2026</span>
                               <span class="sede-tag">📍 <a href="https://arenaguadalajara.com" target="_blank">Arena Guadalajara</a></span>
-                              <h3 class="evento-nombre">God Save The Queen</h3>
+                              <h3 class="evento-nombre">God Save The Queen - Tributo</h3>
                             </div>
                             <a href="https://arenaguadalajara.com" class="btn-ticket" target="_blank">Boletos / Info</a>
+                          </div>
+                        </div>
+                        
+                        <div class="evento-tarjeta" data-sede="C3 Stage" data-genero="Indie">
+                          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Festival Indie Guadalajara" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
+                          <div class="evento-cuerpo">
+                            <div>
+                              <span class="badge">Indie</span>
+                              <span class="fecha-tag">🗓️ 20 Nov 2026</span>
+                              <span class="sede-tag">📍 <a href="https://boletomovil.com/" target="_blank">C3 Stage</a></span>
+                              <h3 class="evento-nombre">Festival Indie Guadalajara</h3>
+                            </div>
+                            <a href="https://boletomovil.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+                          </div>
+                        </div>
+                        
+                        <div class="evento-tarjeta" data-sede="Centro Cultural Bretón A.C." data-genero="Jazz-Blues">
+                          <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Noche de Jazz & Jam Session" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
+                          <div class="evento-cuerpo">
+                            <div>
+                              <span class="badge">Jazz-Blues</span>
+                              <span class="fecha-tag">🗓️ 26 Nov 2026</span>
+                              <span class="sede-tag">📍 <a href="https://www.facebook.com/CentroCulturalBreton/" target="_blank">Centro Cultural Bretón A.C.</a></span>
+                              <h3 class="evento-nombre">Noche de Jazz & Jam Session</h3>
+                            </div>
+                            <a href="https://www.facebook.com/CentroCulturalBreton/" class="btn-ticket" target="_blank">Boletos / Info</a>
                           </div>
                         </div>
                         </div></div><div class="mes-bloque"><div class="mes-titulo">Diciembre</div><div class="grid-eventos">
@@ -223,6 +249,32 @@
                             <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
                           </div>
                         </div>
+                        
+                        <div class="evento-tarjeta" data-sede="PALCCO" data-genero="Sinfónico">
+                          <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Gala Navideña: Orquesta de Cámara" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
+                          <div class="evento-cuerpo">
+                            <div>
+                              <span class="badge">Sinfónico</span>
+                              <span class="fecha-tag">🗓️ 12 Dic 2026</span>
+                              <span class="sede-tag">📍 <a href="https://www.palcco.com/" target="_blank">PALCCO</a></span>
+                              <h3 class="evento-nombre">Gala Navideña: Orquesta de Cámara</h3>
+                            </div>
+                            <a href="https://www.palcco.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+                          </div>
+                        </div>
+                        
+                        <div class="evento-tarjeta" data-sede="Foro Independencia" data-genero="Rock-Metal">
+                          <img src="https://images.unsplash.com/photo-1472653431158-6364773b2a56?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Posada Punk Rock GDL" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
+                          <div class="evento-cuerpo">
+                            <div>
+                              <span class="badge">Rock-Metal</span>
+                              <span class="fecha-tag">🗓️ 18 Dic 2026</span>
+                              <span class="sede-tag">📍 <a href="https://boletomovil.com/" target="_blank">Foro Independencia</a></span>
+                              <h3 class="evento-nombre">Posada Punk Rock GDL</h3>
+                            </div>
+                            <a href="https://boletomovil.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+                          </div>
+                        </div>
                         </div></div><div class="mes-bloque"><div class="mes-titulo">Enero</div><div class="grid-eventos">
                         <div class="evento-tarjeta" data-sede="Teatro Diana" data-genero="Rock-Metal">
                           <img src="https://images.unsplash.com/photo-1472653431158-6364773b2a56?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="La Esfinge (Cristian Castro)" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
@@ -234,6 +286,19 @@
                               <h3 class="evento-nombre">La Esfinge (Cristian Castro)</h3>
                             </div>
                             <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
+                          </div>
+                        </div>
+                        
+                        <div class="evento-tarjeta" data-sede="Auditorio Benito Juárez" data-genero="Mariachi-Regional">
+                          <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Festival del Mariachi Tradicional" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'">
+                          <div class="evento-cuerpo">
+                            <div>
+                              <span class="badge">Mariachi-Regional</span>
+                              <span class="fecha-tag">🗓️ 22 Ene 2027</span>
+                              <span class="sede-tag">📍 <a href="https://www.superboletos.com/" target="_blank">Auditorio Benito Juárez</a></span>
+                              <h3 class="evento-nombre">Festival del Mariachi Tradicional</h3>
+                            </div>
+                            <a href="https://www.superboletos.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
                           </div>
                         </div>
                         
@@ -259,7 +324,7 @@
         tarjetas.forEach(tarjeta => {
             const tarjetaSede = tarjeta.getAttribute('data-sede');
             const tarjetaGenero = tarjeta.getAttribute('data-genero');
-            
+
             const cumpleSede = (sedeSeleccionada === 'all' || tarjetaSede === sedeSeleccionada);
             const cumpleGenero = (generoSeleccionado === 'all' || tarjetaGenero === generoSeleccionado);
 
