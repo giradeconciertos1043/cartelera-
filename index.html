@@ -6,7 +6,7 @@
       <h3 class="sorteo-titulo">Sorteo: Juana la cubana </h3>
     </div>
     <p class="sorteo-subtitulo">¡Anótate en vivo para ganar tus pases de esta semana!</p>
-    <form class="sorteo-formulario" action="https://formspree.io/f/xljbrdbv" method="POST" target="_blank">
+    <form class="sorteo-formulario" action="https://formspree.io/f/xvggpzee" method="POST" target="_blank">
       <input type="hidden" name="Sorteo Activo" value="Juana la cubana ">
       <input class="sorteo-input" type="text" name="Nombre Completo" placeholder="Tu nombre completo" required>
       <input class="sorteo-input" type="tel" name="Celular" placeholder="Número de celular (ej. 3312345678)" required>
@@ -21,22 +21,12 @@
       <span style="font-size: 1.3em;">🎙️</span>
       <h3 class="sorteo-titulo" style="color: #10b981;">Reporta tu Concierto</h3>
     </div>
-    <p class="sorteo-subtitulo">Graba tu reporte. Se guardará directamente en nuestro Google Drive de forma segura.</p>
-
-    <form id="form-reporte-audio-drive" class="sorteo-formulario">
-      <input class="sorteo-input" type="text" id="nombre-reportero" name="Nombre" placeholder="Tu nombre o apodo" required>
-
-      <!-- Controles del Grabador -->
-      <div style="background: #0f172a; padding: 10px; border-radius: 8px; border: 1px dashed #10b981; text-align: center; margin-bottom: 5px;">
-        <button type="button" id="btn-iniciar-grabacion" style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8em; margin: 4px;">🔴 Iniciar Grabación</button>
-        <button type="button" id="btn-detener-grabacion" style="background: #475569; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8em; margin: 4px; display: none;">⏹️ Detener</button>
-
-        <div id="estado-grabacion" style="font-size: 0.75em; color: #10b981; margin-top: 5px; display: none;">🎙️ Grabando... <span id="cronometro-grabacion">00:00</span></div>
-        <audio id="audio-preview" controls style="width: 100%; height: 30px; margin-top: 8px; display: none;"></audio>
-      </div>
-
-      <button class="sorteo-boton" type="submit" id="btn-enviar-audio" style="background: #10b981; color: #ffffff;">Subir Audio a Google Drive 🚀</button>
-      <div id="mensaje-estado-envio" style="font-size: 0.85em; margin-top: 8px; text-align: center; font-weight: bold;"></div>
+    <p class="sorteo-subtitulo">¡Envíanos tu nota de voz o audio en vivo desde el evento!</p>
+    <form class="sorteo-formulario" action="https://formspree.io/f/xvggpzee" method="POST" enctype="multipart/form-data" target="_blank">
+      <input type="hidden" name="Formulario Tipo" value="Reporte de Concierto En Vivo">
+      <input class="sorteo-input" type="text" name="Nombre del Reportero" placeholder="Tu nombre o apodo" required>
+      <input class="sorteo-input" type="file" name="Audio Grabacion" accept="audio/*" style="color: #cbd5e1; font-size: 0.8em;" required>
+      <button class="sorteo-boton" type="submit" style="background: #10b981; color: #ffffff;">Enviar Mi Audio 🚀</button>
     </form>
   </div>
 </div>
