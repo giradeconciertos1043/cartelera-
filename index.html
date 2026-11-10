@@ -6,7 +6,7 @@
       <h3 class="sorteo-titulo">Sorteo: Juana la cubana </h3>
     </div>
     <p class="sorteo-subtitulo">¡Anótate en vivo para ganar tus pases de esta semana!</p>
-    <form class="sorteo-formulario" action="https://formspree.io/f/xljbrdbv" method="POST" target="_blank">
+    <form class="sorteo-formulario" action="https://formspree.io/f/xvggpzee" method="POST" target="_blank">
       <input type="hidden" name="Sorteo Activo" value="Juana la cubana ">
       <input class="sorteo-input" type="text" name="Nombre Completo" placeholder="Tu nombre completo" required>
       <input class="sorteo-input" type="tel" name="Celular" placeholder="Número de celular (ej. 3312345678)" required>
@@ -21,22 +21,12 @@
       <span style="font-size: 1.3em;">🎙️</span>
       <h3 class="sorteo-titulo" style="color: #10b981;">Reporta tu Concierto</h3>
     </div>
-    <p class="sorteo-subtitulo">Graba tu reporte. Se guardará directamente en nuestro Google Drive de forma segura.</p>
-
-    <form id="form-reporte-audio-drive" class="sorteo-formulario">
-      <input class="sorteo-input" type="text" id="nombre-reportero" name="Nombre" placeholder="Tu nombre o apodo" required>
-
-      <!-- Controles del Grabador -->
-      <div style="background: #0f172a; padding: 10px; border-radius: 8px; border: 1px dashed #10b981; text-align: center; margin-bottom: 5px;">
-        <button type="button" id="btn-iniciar-grabacion" style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8em; margin: 4px;">🔴 Iniciar Grabación</button>
-        <button type="button" id="btn-detener-grabacion" style="background: #475569; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8em; margin: 4px; display: none;">⏹️ Detener</button>
-
-        <div id="estado-grabacion" style="font-size: 0.75em; color: #10b981; margin-top: 5px; display: none;">🎙️ Grabando... <span id="cronometro-grabacion">00:00</span></div>
-        <audio id="audio-preview" controls style="width: 100%; height: 30px; margin-top: 8px; display: none;"></audio>
-      </div>
-
-      <button class="sorteo-boton" type="submit" id="btn-enviar-audio" style="background: #10b981; color: #ffffff;">Subir Audio a Google Drive 🚀</button>
-      <div id="mensaje-estado-envio" style="font-size: 0.85em; margin-top: 8px; text-align: center; font-weight: bold;"></div>
+    <p class="sorteo-subtitulo">¡Envíanos tu nota de voz o audio en vivo desde el evento!</p>
+    <form class="sorteo-formulario" action="https://formspree.io/f/xvggpzee" method="POST" enctype="multipart/form-data" target="_blank">
+      <input type="hidden" name="Formulario Tipo" value="Reporte de Concierto En Vivo">
+      <input class="sorteo-input" type="text" name="Nombre del Reportero" placeholder="Tu nombre o apodo" required>
+      <input class="sorteo-input" type="file" name="Audio Grabacion" accept="audio/*" style="color: #cbd5e1; font-size: 0.8em;" required>
+      <button class="sorteo-boton" type="submit" style="background: #10b981; color: #ffffff;">Enviar Mi Audio 🚀</button>
     </form>
   </div>
 </div>
@@ -305,129 +295,4 @@
                 <a href="https://www.palcco.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
             </div>
-            </div></div></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p><p>Idea y Producción por: Sebastián Cecillon & Asistente Inteligente IA</p></div></div><script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script>
-<script>
-let mediaRecorder;
-let audioChunks = [];
-let cronometroInterval;
-let segundosTranscurridos = 0;
-let audioBase64 = "";
-
-const btnIniciar = document.getElementById('btn-iniciar-grabacion');
-const btnDetener = document.getElementById('btn-detener-grabacion');
-const estadoGrabacion = document.getElementById('estado-grabacion');
-const cronometro = document.getElementById('cronometro-grabacion');
-const audioPreview = document.getElementById('audio-preview');
-const formAudio = document.getElementById('form-reporte-audio-drive');
-const btnEnviar = document.getElementById('btn-enviar-audio');
-const mensajeEstado = document.getElementById('mensaje-estado-envio');
-
-if (btnIniciar) {
-  btnIniciar.addEventListener('click', async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorder = new MediaRecorder(stream);
-      audioChunks = [];
-
-      mediaRecorder.ondataavailable = event => {
-        audioChunks.push(event.data);
-      };
-
-      mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
-        const audioUrl = URL.createObjectURL(audioBlob);
-        audioPreview.src = audioUrl;
-        audioPreview.style.display = 'block';
-
-        const reader = new FileReader();
-        reader.readAsDataURL(audioBlob);
-        reader.onloadend = () => {
-          audioBase64 = reader.result;
-          console.log("🎙️ Audio listo para subida directa a Google Drive.");
-        };
-      };
-
-      mediaRecorder.start();
-      btnIniciar.style.display = 'none';
-      btnDetener.style.display = 'inline-block';
-      estadoGrabacion.style.display = 'block';
-
-      segundosTranscurridos = 0;
-      cronometroInterval = setInterval(() => {
-        segundosTranscurridos++;
-        const mins = String(Math.floor(segundosTranscurridos / 60)).padStart(2, '0');
-        const secs = String(segundosTranscurridos % 60).padStart(2, '0');
-        cronometro.textContent = `${mins}:${secs}`;
-      }, 1000);
-
-    } catch (err) {
-      alert('⚠️ Por favor otorga permisos para utilizar el micrófono de tu celular o computadora.');
-      console.error(err);
-    }
-  });
-
-  btnDetener.addEventListener('click', () => {
-    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-      mediaRecorder.stop();
-      mediaRecorder.stream.getTracks().forEach(track => track.stop());
-      clearInterval(cronometroInterval);
-      btnIniciar.style.display = 'inline-block';
-      btnIniciar.textContent = '🔄 Volver a Grabar';
-      btnDetener.style.display = 'none';
-      estadoGrabacion.style.display = 'none';
-    }
-  });
-}
-
-if (formAudio) {
-  formAudio.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (!audioBase64) {
-      alert("🔴 Primero graba una nota de voz antes de intentar subir el archivo.");
-      return;
-    }
-
-    btnEnviar.disabled = true;
-    btnEnviar.textContent = "Guardando en tu Google Drive...";
-    mensajeEstado.style.color = "#f59e0b";
-    mensajeEstado.textContent = "⏳ Enviando audio al servidor de Google Drive...";
-
-    const payload = {
-      nombre: document.getElementById('nombre-reportero').value,
-      audio_base64: audioBase64
-    };
-
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbw5DauNG3C6KCm-vU9ZF_G8OeIb-kLt4dsvVPJwyXcSxY7S9q4_cnQfSw0cwt_68HQ2dQ/exec", {
-        redirect: "follow",
-        method: "POST",
-        body: JSON.stringify(payload)
-      });
-
-      const resData = await response.json();
-
-      if (resData.status === "success") {
-        mensajeEstado.style.color = "#10b981";
-        mensajeEstado.textContent = "🟢 ¡Guardado con éxito en tu Google Drive! Sigue reportando.";
-        formAudio.reset();
-        audioPreview.style.display = 'none';
-        audioBase64 = "";
-        btnIniciar.textContent = "🔴 Iniciar Grabación";
-      } else {
-        mensajeEstado.style.color = "#ef4444";
-        mensajeEstado.textContent = "❌ Error en la API de Google: " + resData.message;
-      }
-    } catch (err) {
-      console.error(err);
-      // A veces redirecciones CORS disparan catch pero los datos llegan correctamente
-      mensajeEstado.style.color = "#10b981";
-      mensajeEstado.textContent = "🟢 ¡Envío completado! Verifica tu carpeta de Google Drive.";
-    } finally {
-      btnEnviar.disabled = false;
-      btnEnviar.textContent = "Subir Audio a Google Drive 🚀";
-    }
-  });
-}
-</script>
-</body></html>
+            </div></div></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p><p>Idea y Producción por: Sebastián Cecillon & Asistente Inteligente IA</p></div></div><script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script></body></html>
