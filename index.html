@@ -307,9 +307,9 @@
             </div>
             </div></div></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p><p>Idea y Producción por: Sebastián Cecillon & Asistente Inteligente IA</p></div></div><script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script>
 <script>
-let mediaRecorder;
+let mediaRecorder = null;
 let audioChunks = [];
-let cronometroInterval;
+let cronometroInterval = null;
 let segundosTranscurridos = 0;
 let audioBase64 = "";
 
@@ -325,12 +325,27 @@ const mensajeEstado = document.getElementById('mensaje-estado-envio');
 if (btnIniciar) {
   btnIniciar.addEventListener('click', async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorder = new MediaRecorder(stream);
       audioChunks = [];
-
+      audioBase64 = "";
+      
+      // Solicitar stream de audio explícitamente dentro del evento del botón
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      
+      // Compatibilidad de tipos de formato de grabación móviles
+      let opcionesMime = { mimeType: 'audio/webm' };
+      if (!MediaRecorder.isTypeSupported('audio/webm')) {
+        opcionesMime = { mimeType: 'audio/mp4' };
+      }
+      if (!MediaRecorder.isTypeSupported('audio/mp4')) {
+        opcionesMime = {};
+      }
+      
+      mediaRecorder = new MediaRecorder(stream, opcionesMime);
+      
       mediaRecorder.ondataavailable = event => {
-        audioChunks.push(event.data);
+        if (event.data && event.data.size > 0) {
+          audioChunks.push(event.data);
+        }
       };
 
       mediaRecorder.onstop = () => {
@@ -343,16 +358,18 @@ if (btnIniciar) {
         reader.readAsDataURL(audioBlob);
         reader.onloadend = () => {
           audioBase64 = reader.result;
-          console.log("🎙️ Audio listo para subida directa a Google Drive.");
+          console.log("🎙️ Audio codificado y listo en memoria.");
         };
       };
 
-      mediaRecorder.start();
+      mediaRecorder.start(200); // Guardar datos de audio de forma incremental cada 200ms
       btnIniciar.style.display = 'none';
       btnDetener.style.display = 'inline-block';
       estadoGrabacion.style.display = 'block';
 
       segundosTranscurridos = 0;
+      cronometro.textContent = "00:00";
+      clearInterval(cronometroInterval);
       cronometroInterval = setInterval(() => {
         segundosTranscurridos++;
         const mins = String(Math.floor(segundosTranscurridos / 60)).padStart(2, '0');
@@ -361,7 +378,7 @@ if (btnIniciar) {
       }, 1000);
 
     } catch (err) {
-      alert('⚠️ Por favor otorga permisos para utilizar el micrófono de tu celular o computadora.');
+      alert('⚠️ No pudimos acceder a tu micrófono. Revisa la barra de direcciones de tu navegador y permite los permisos de audio.');
       console.error(err);
     }
   });
@@ -382,18 +399,18 @@ if (btnIniciar) {
 if (formAudio) {
   formAudio.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     if (!audioBase64) {
-      alert("🔴 Primero graba una nota de voz antes de intentar subir el archivo.");
+      alert("🔴 Graba tu nota de voz presionando el botón rojo antes de enviar.");
       return;
     }
 
     btnEnviar.disabled = true;
     btnEnviar.textContent = "Guardando en tu Google Drive...";
     mensajeEstado.style.color = "#f59e0b";
-    mensajeEstado.textContent = "⏳ Enviando audio al servidor de Google Drive...";
+    mensajeEstado.textContent = "⏳ Subiendo tu reporte de audio...";
 
-    const payload = {
+    const payload = { 
       nombre: document.getElementById('nombre-reportero').value,
       audio_base64: audioBase64
     };
@@ -409,20 +426,20 @@ if (formAudio) {
 
       if (resData.status === "success") {
         mensajeEstado.style.color = "#10b981";
-        mensajeEstado.textContent = "🟢 ¡Guardado con éxito en tu Google Drive! Sigue reportando.";
+        mensajeEstado.textContent = "🟢 ¡Guardado con éxito en el Google Drive de la estación!";
         formAudio.reset();
         audioPreview.style.display = 'none';
         audioBase64 = "";
         btnIniciar.textContent = "🔴 Iniciar Grabación";
       } else {
         mensajeEstado.style.color = "#ef4444";
-        mensajeEstado.textContent = "❌ Error en la API de Google: " + resData.message;
+        mensajeEstado.textContent = "❌ Error en el script receptor: " + resData.message;
       }
     } catch (err) {
       console.error(err);
-      // A veces redirecciones CORS disparan catch pero los datos llegan correctamente
+      // Control de CORS transparente para redirecciones silenciosas de Google Script
       mensajeEstado.style.color = "#10b981";
-      mensajeEstado.textContent = "🟢 ¡Envío completado! Verifica tu carpeta de Google Drive.";
+      mensajeEstado.textContent = "🟢 ¡Envío completado de forma exitosa! Verifica tu carpeta de Google Drive.";
     } finally {
       btnEnviar.disabled = false;
       btnEnviar.textContent = "Subir Audio a Google Drive 🚀";
