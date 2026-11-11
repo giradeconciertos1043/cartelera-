@@ -16,6 +16,32 @@
     </form>
   </div>
 </div>
+
+<div class="flex-columna-cabecera">
+  <div class="sorteo-contenedor" style="border-color: #10b981;">
+    <div class="sorteo-cabecera">
+      <span style="font-size: 1.3em;">🎙️</span>
+      <h3 class="sorteo-titulo" style="color: #10b981;">Reporta el tokin</h3>
+    </div>
+    <p class="sorteo-subtitulo"> Envía tu reporte de audio en vivo directamente.</p>
+
+    <form id="form-reporte-audio-drive" class="sorteo-formulario">
+      <input class="sorteo-input" type="text" id="nombre-reportero" name="Nombre" placeholder="Tu nombre o apodo" required>
+
+      <!-- Controles del Grabador -->
+      <div style="background: #0f172a; padding: 10px; border-radius: 8px; border: 1px dashed #10b981; text-align: center; margin-bottom: 5px;">
+        <button type="button" id="btn-iniciar-grabacion" style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8em; margin: 4px;">🔴 Iniciar Grabación</button>
+        <button type="button" id="btn-detener-grabacion" style="background: #475569; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8em; margin: 4px; display: none;">⏹️ Detener</button>
+
+        <div id="estado-grabacion" style="font-size: 0.75em; color: #10b981; margin-top: 5px; display: none;">🎙️ Grabando... <span id="cronometro-grabacion">00:00</span></div>
+        <audio id="audio-preview" controls style="width: 100%; height: 30px; margin-top: 8px; display: none;"></audio>
+      </div>
+
+      <button class="sorteo-boton" type="submit" id="btn-enviar-audio" style="background: #10b981; color: #ffffff;">Subir Audio  🚀</button>
+      <div id="mensaje-estado-envio" style="font-size: 0.85em; margin-top: 8px; text-align: center; font-weight: bold;"></div>
+    </form>
+  </div>
+</div>
 </div><div id="calendario-contenedor"><div class="widget-clima-hora" style="display: flex; gap: 20px; margin-bottom: 25px; background: #0f172a; padding: 15px 25px; border-radius: 12px; border: 1px solid #334155; align-items: center; justify-content: space-around;">  <div style="font-size: 1.1em; color: #cbd5e1;">📍 <span>Guadalajara, Jal.</span></div>  <div style="font-size: 1.1em; color: #cbd5e1;">🌤️ Clima: <span style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">24°C</span> (Despejado)</div>  <div style="font-size: 1.1em; color: #cbd5e1;">🕒 Hora Local: <span id="reloj-dinamico-gdl" style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">--:--:--</span></div></div>
         <div class="sede-bloque" style="border-left: 5px solid #f59e0b; margin-top:30px;">
           <div class="sede-header-flex">
@@ -448,7 +474,7 @@ if (formSorteo) {
     };
 
     try {
-      const response = await fetch("", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwS7FZYEoAJy6C92kArMCFzJelPzPapwCWMIdyF7xr9wVmJCV9RIUnDoedvF_j68XR8Og/exec", {
         method: "POST",
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
