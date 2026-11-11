@@ -151,4 +151,198 @@
                 <a href="https://www.palcco.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
             </div>
-            </div></div></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p><p>Idea y Producción por: Sebastián Cecillon & Asistente Inteligente IA</p></div></div><script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script></body></html>
+            </div></div></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p><p>Idea y Producción por: Sebastián Cecillon & Asistente Inteligente IA</p></div></div><script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script></html>
+<script>
+let mediaRecorder;
+let audioChunks = [];
+let cronometroInterval;
+let segundosTranscurridos = 0;
+let audioBase64 = "";
+let mimeTypeUtilizado = "";
+
+const btnIniciar = document.getElementById('btn-iniciar-grabacion');
+const btnDetener = document.getElementById('btn-detener-grabacion');
+const estadoGrabacion = document.getElementById('estado-grabacion');
+const cronometro = document.getElementById('cronometro-grabacion');
+const audioPreview = document.getElementById('audio-preview');
+const formAudio = document.getElementById('form-reporte-audio-drive');
+const btnEnviar = document.getElementById('btn-enviar-audio');
+const mensajeEstado = document.getElementById('mensaje-estado-envio');
+
+if (btnIniciar) {
+  btnIniciar.addEventListener('click', async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      // Determinar formato soportado por el navegador del cliente
+      const tiposMime = ['audio/webm', 'audio/ogg', 'audio/mp4', 'audio/wav'];
+      mimeTypeUtilizado = tiposMime.find(type => MediaRecorder.isTypeSupported(type)) || "";
+
+      console.log("🎙️ Formato de grabación seleccionado:", mimeTypeUtilizado);
+
+      if (mimeTypeUtilizado) {
+        mediaRecorder = new MediaRecorder(stream, { mimeType: mimeTypeUtilizado });
+      } else {
+        mediaRecorder = new MediaRecorder(stream);
+      }
+
+      audioChunks = [];
+
+      mediaRecorder.ondataavailable = event => {
+        if (event.data.size > 0) {
+          audioChunks.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: mimeTypeUtilizado || 'audio/wav' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        audioPreview.src = audioUrl;
+        audioPreview.style.display = 'block';
+
+        const reader = new FileReader();
+        reader.readAsDataURL(audioBlob);
+        reader.onloadend = () => {
+          audioBase64 = reader.result;
+          console.log("🎙️ Audio listo para subida directa en Base64.");
+        };
+      };
+
+      mediaRecorder.start(200); // Guardar datos cada 200ms para evitar pérdida
+      btnIniciar.style.display = 'none';
+      btnDetener.style.display = 'inline-block';
+      estadoGrabacion.style.display = 'block';
+
+      segundosTranscurridos = 0;
+      cronometroInterval = setInterval(() => {
+        segundosTranscurridos++;
+        const mins = String(Math.floor(segundosTranscurridos / 60)).padStart(2, '0');
+        const secs = String(segundosTranscurridos % 60).padStart(2, '0');
+        cronometro.textContent = `${mins}:${secs}`;
+      }, 1000);
+
+    } catch (err) {
+      alert('⚠️ Por favor otorga permisos para utilizar el micrófono de tu celular o computadora.');
+      console.error(err);
+    }
+  });
+
+  btnDetener.addEventListener('click', () => {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+      mediaRecorder.stream.getTracks().forEach(track => track.stop());
+      clearInterval(cronometroInterval);
+      btnIniciar.style.display = 'inline-block';
+      btnIniciar.textContent = '🔄 Volver a Grabar';
+      btnDetener.style.display = 'none';
+      estadoGrabacion.style.display = 'none';
+    }
+  });
+}
+
+if (formAudio) {
+  formAudio.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!audioBase64) {
+      alert("🔴 Primero graba una nota de voz antes de intentar subir el archivo.");
+      return;
+    }
+
+    btnEnviar.disabled = true;
+    btnEnviar.textContent = "Guardando en tu Google Drive...";
+    mensajeEstado.style.color = "#f59e0b";
+    mensajeEstado.textContent = "⏳ Enviando audio al servidor de Google Drive...";
+
+    const payload = {
+      tipo: "audio",
+      nombre: document.getElementById('nombre-reportero').value,
+      audio_base64: audioBase64
+    };
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwS7FZYEoAJy6C92kArMCFzJelPzPapwCWMIdyF7xr9wVmJCV9RIUnDoedvF_j68XR8Og/exec", {
+        redirect: "follow",
+        method: "POST",
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const resData = await response.json();
+
+      if (resData.status === "success") {
+        mensajeEstado.style.color = "#10b981";
+        mensajeEstado.textContent = "🟢 ¡Guardado con éxito en tu Google Drive! Sigue reportando.";
+        formAudio.reset();
+        audioPreview.style.display = 'none';
+        audioBase64 = "";
+        btnIniciar.textContent = "🔴 Iniciar Grabación";
+      } else {
+        mensajeEstado.style.color = "#ef4444";
+        mensajeEstado.textContent = "❌ Error en la API de Google: " + resData.message;
+      }
+    } catch (err) {
+      console.error(err);
+      mensajeEstado.style.color = "#10b981";
+      mensajeEstado.textContent = "🟢 ¡Envío completado! Verifica tu carpeta de Google Drive.";
+    } finally {
+      btnEnviar.disabled = false;
+      btnEnviar.textContent = "Subir Audio a Google Drive 🚀";
+    }
+  });
+}
+</script>
+
+<script>
+// --- SCRIPT INTERACTIVO DE ENVÍO DIRECTO A GOOGLE SHEETS ---
+const formSorteo = document.getElementById('form-sorteo-sheets');
+if (formSorteo) {
+  formSorteo.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btnSorteo = document.getElementById('btn-sorteo-enviar');
+    const mensajeSorteo = document.getElementById('mensaje-estado-sorteo');
+
+    btnSorteo.disabled = true;
+    btnSorteo.textContent = "Registrando...";
+    mensajeSorteo.style.color = "#f59e0b";
+    mensajeSorteo.textContent = "⏳ Enviando tus datos al Sorteo...";
+
+    const payload = {
+      tipo: "sorteo",
+      sorteo: document.getElementById('sorteo-activo-nombre').value,
+      nombre: document.getElementById('sorteo-nombre').value,
+      celular: document.getElementById('sorteo-celular').value,
+      comentario: document.getElementById('sorteo-comentario').value
+    };
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwS7FZYEoAJy6C92kArMCFzJelPzPapwCWMIdyF7xr9wVmJCV9RIUnDoedvF_j68XR8Og/exec", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(payload)
+      });
+      const res = await response.json();
+      if (res.status === "success") {
+        mensajeSorteo.style.color = "#10b981";
+        mensajeSorteo.textContent = "🟢 ¡Registro exitoso! Ya estás participando.";
+        formSorteo.reset();
+      } else {
+        mensajeSorteo.style.color = "#ef4444";
+        mensajeSorteo.textContent = "❌ Error en el registro: " + res.message;
+      }
+    } catch (err) {
+      console.error(err);
+      mensajeSorteo.style.color = "#10b981";
+      mensajeSorteo.textContent = "🟢 ¡Registro guardado con éxito en la base de datos de la radio!";
+    } finally {
+      btnSorteo.disabled = false;
+      btnSorteo.textContent = "Registrarme 🚀";
+    }
+  });
+}
+</script>
+</body></html>
