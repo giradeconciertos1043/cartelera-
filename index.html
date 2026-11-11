@@ -95,21 +95,47 @@ h1 { color: #f59e0b; margin: 0; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,
       audioControl.play().catch(err => console.log('Error al reproducir la promo:', err));
     }
   });
-</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta-flex">  <div class="header-meta">🤖 Agenda Automatizada | Sincronización Semanal</div>  </div></div><img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" /></div><div class="flex-cabecera-interactiva"><div class="flex-columna-cabecera"><div class="reproductor-box">  <span id="streaming-status-text">🎙️ Escucha nuestra Promo de Bienvenida 🎙️</span>  <div class="control-reproductor-pro">    <audio id="audio-reproductor-principal" class="reproductor-nativo" controls><source src="PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3" type="audio/mpeg"></audio>    <button id="btn-cambiar-fuente" class="selector-fuente">📻 Cambiar a Radio en Vivo</button>    <a href="https://udgtv.com/podcast/guadalajara" class="btn-podcast" target="blank">🎙️ Ir al Podcast Oficial</a>  </div></div></div>
+</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta-flex">  <div class="header-meta">🤖 Agenda Automatizada | Sincronización Semanal</div>  <div class="header-clima-mini">  <span>📍 Guadalajara</span> |   <span>🌤️ <span class="destacado">24°C</span> (Despejado)</span> |   <span>🕒 <span id="reloj-dinamico-gdl" class="destacado">--:--:--</span></span></div></div></div><img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" /></div><div class="flex-cabecera-interactiva"><div class="flex-columna-cabecera"><div class="reproductor-box">  <span id="streaming-status-text">🎙️ Escucha nuestra Promo de Bienvenida 🎙️</span>  <div class="control-reproductor-pro">    <audio id="audio-reproductor-principal" class="reproductor-nativo" controls><source src="PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3" type="audio/mpeg"></audio>    <button id="btn-cambiar-fuente" class="selector-fuente">📻 Cambiar a Radio en Vivo</button>    <a href="https://udgtv.com/podcast/guadalajara" class="btn-podcast" target="blank">🎙️ Ir al Podcast Oficial</a>  </div></div></div>
 <div class="flex-columna-cabecera">
   <div class="sorteo-contenedor">
     <div class="sorteo-cabecera">
       <span style="font-size: 1.3em;">🎫</span>
-      <h3 class="sorteo-titulo">Sorteo: Pases de la Semana</h3>
+      <h3 class="sorteo-titulo">Sorteo: tributo skap</h3>
     </div>
     <p class="sorteo-subtitulo">¡Participa en vivo para ganar tus boletos! Registra tus datos.</p>
     <form class="sorteo-formulario" id="form-sorteo-sheets">
-      <input type="hidden" name="Sorteo" id="sorteo-activo-nombre" value="Pases de la Semana">
+      <input type="hidden" name="Sorteo" id="sorteo-activo-nombre" value="tributo skap">
       <input class="sorteo-input" type="text" name="Nombre" id="sorteo-nombre" placeholder="Nombre del participante" required>
       <input class="sorteo-input" type="tel" name="Celular" id="sorteo-celular" placeholder="Teléfono (ej. 3312345678)" required>
       <input class="sorteo-input" type="text" name="Comentario" id="sorteo-comentario" placeholder="Mensaje o comentario (opcional)">
       <button class="sorteo-boton" type="submit" id="btn-sorteo-enviar">Registrarme 🚀</button>
       <div id="mensaje-estado-sorteo" style="font-size: 0.85em; margin-top: 8px; text-align: center; font-weight: bold; color: #f59e0b;"></div>
+    </form>
+  </div>
+</div>
+
+<div class="flex-columna-cabecera">
+  <div class="sorteo-contenedor" style="border-color: #10b981;">
+    <div class="sorteo-cabecera">
+      <span style="font-size: 1.3em;">🎙️</span>
+      <h3 class="sorteo-titulo" style="color: #10b981;">Reporta el tokin</h3>
+    </div>
+    <p class="sorteo-subtitulo"> Envíanos tu reporte ¡como vives la musica en vivo!.</p>
+
+    <form id="form-reporte-audio-drive" class="sorteo-formulario">
+      <input class="sorteo-input" type="text" id="nombre-reportero" name="Nombre" placeholder="Tu nombre o apodo" required>
+
+      <!-- Controles del Grabador -->
+      <div style="background: #0f172a; padding: 10px; border-radius: 8px; border: 1px dashed #10b981; text-align: center; margin-bottom: 5px;">
+        <button type="button" id="btn-iniciar-grabacion" style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8em; margin: 4px;">🔴 Iniciar Grabación</button>
+        <button type="button" id="btn-detener-grabacion" style="background: #475569; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8em; margin: 4px; display: none;">⏹️ Detener</button>
+
+        <div id="estado-grabacion" style="font-size: 0.75em; color: #10b981; margin-top: 5px; display: none;">🎙️ Grabando... <span id="cronometro-grabacion">00:00</span></div>
+        <audio id="audio-preview" controls style="width: 100%; height: 30px; margin-top: 8px; display: none;"></audio>
+      </div>
+
+      <button class="sorteo-boton" type="submit" id="btn-enviar-audio" style="background: #10b981; color: #ffffff;">Subir Audio  🚀</button>
+      <div id="mensaje-estado-envio" style="font-size: 0.85em; margin-top: 8px; text-align: center; font-weight: bold;"></div>
     </form>
   </div>
 </div>
