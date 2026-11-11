@@ -274,11 +274,11 @@ if (formAudio) {
 
       if (resData.status === "success") {
         mensajeEstado.style.color = "#10b981";
-        mensajeEstado.textContent = "🟢 ¡Guardado con éxito en tu Google Drive! Sigue reportando.";
+        mensajeEstado.textContent = "🟢 ¡Guardado en cabina de RADIO! Sigue reportando.";
         formAudio.reset();
         audioPreview.style.display = 'none';
         audioBase64 = "";
-        btnIniciar.textContent = "🔴 Iniciar Grabación";
+        btnIniciar.textContent = "🔴 Grabar";
       } else {
         mensajeEstado.style.color = "#ef4444";
         mensajeEstado.textContent = "❌ Error en la API de Google: " + resData.message;
@@ -289,7 +289,7 @@ if (formAudio) {
       mensajeEstado.textContent = "🟢 ¡Envío completado! Verifica tu carpeta de Google Drive.";
     } finally {
       btnEnviar.disabled = false;
-      btnEnviar.textContent = "Subir Audio a Google Drive 🚀";
+      btnEnviar.textContent = "Subir Audio 🚀";
     }
   });
 }
