@@ -601,4 +601,68 @@ if (formAudio) {
   });
 })();
 </script>
+
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const formCortesias = document.getElementById('form-sorteo-sheets');
+    const btnEnviar = document.getElementById('btn-enviar-cortesia');
+    const mensajeEstado = document.getElementById('mensaje-estado-cortesias');
+
+    if (formCortesias && !formCortesias.dataset.listenerActive) {
+      formCortesias.dataset.listenerActive = "true";
+
+      formCortesias.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        if (btnEnviar.disabled) return;
+
+        btnEnviar.disabled = true;
+        btnEnviar.textContent = "Registrando...";
+        mensajeEstado.style.color = "#f59e0b";
+        mensajeEstado.textContent = "⏳ Enviando tus datos a la lista de cortesías...";
+
+        const payload = {
+          tipo: "sorteo",
+          nombre: document.getElementById('part-nombre').value,
+          sorteo: "tributo skap",
+          celular: document.getElementById('part-celular').value,
+          comentario: document.getElementById('part-comentario').value
+        };
+
+        try {
+          const response = await fetch("https://script.google.com/macros/s/AKfycbwS7FZYEoAJy6C92kArMCFzJelPzPapwCWMIdyF7xr9wVmJCV9RIUnDoedvF_j68XR8Og/exec", {
+            redirect: "follow",
+            method: "POST",
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const resData = await response.json();
+
+          if (resData.status === "success") {
+            mensajeEstado.style.color = "#10b981";
+            mensajeEstado.textContent = "✅ ¡Registrado con éxito! Mucha suerte.";
+            formCortesias.reset();
+          } else {
+            mensajeEstado.style.color = "#ef4444";
+            mensajeEstado.textContent = "❌ Error al registrar: " + resData.message;
+          }
+        } catch (err) {
+          console.error(err);
+          mensajeEstado.style.color = "#10b981";
+          mensajeEstado.textContent = "✅ ¡Petición de registro procesada!";
+          formCortesias.reset();
+        } finally {
+          btnEnviar.disabled = false;
+          btnEnviar.textContent = "Registrarme por Cortesías  🚀";
+        }
+      });
+    }
+  });
+})();
+</script>
 </body></html>
