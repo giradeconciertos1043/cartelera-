@@ -4,8 +4,8 @@
   .selector-fuente { background: #1e293b; color: #f59e0b; border: 1px solid #f59e0b; padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85em; cursor: pointer; outline: none; margin-top: 5px; transition: all 0.2s; }
   .selector-fuente:hover { background: #f59e0b; color: #1e293b; }
 
-  /* Layout de 3 columnas principales en pantalla */
-  .contenedor-horizontal-interactivo { 
+  /* Contenedor Horizontal Adaptable de 3 Columnas */
+  .contenedor-horizontal-interactivo {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
@@ -35,7 +35,7 @@
     overflow: hidden;
   }
 </style><script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() { 
     const audioControl = document.getElementById('audio-reproductor-principal');
     const btnCambiarFuente = document.getElementById('btn-cambiar-fuente');
     const indicadorEstado = document.getElementById('streaming-status-text');
@@ -81,7 +81,7 @@
       audioControl.play().catch(err => console.log('Error al reproducir la promo:', err));
     }
   });
-</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1> Gira de Conciertos 104.3Fm </h1><div class="header-meta-flex">  <div class="header-meta"> Agenda Automatizada | Cortesías Activas</div>  </div></div><img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" /></div>
+</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta-flex">  <div class="header-meta">🤖 Agenda Automatizada | Cortesías Activas</div>  </div></div><img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" /></div>
 <div class="transmision-split-grid">
   <div style="position: relative; padding-top: 56.25%; height: 0;">
     <iframe src="https://player.kick.com/radioudeg?autoplay=true&muted=true"
@@ -90,7 +90,7 @@
     </iframe>
   </div>
 </div>
-<div class="contenedor-horizontal-interactivo"><div class="columna-interactiva-bloque"><div class="reproductor-box" style="height: 100%; min-height: 250px;">  <span id="streaming-status-text"> Escucha nuestra Promo de Bienvenida </span>  <div class="control-reproductor-pro">    <audio id="audio-reproductor-principal" class="reproductor-nativo" controls><source src="PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3" type="audio/mpeg"></audio>    <button id="btn-cambiar-fuente" class="selector-fuente"> Cambiar a Radio en Vivo</button>    <a href="https://udgtv.com/podcast/guadalajara" class="btn-podcast" target="blank"> Ir al Podcast Oficial</a>  </div></div></div><div class="columna-interactiva-bloque">
+<div class="contenedor-horizontal-interactivo"><div class="columna-interactiva-bloque"><div class="reproductor-box" style="height: 100%; min-height: 250px;">  <span id="streaming-status-text">🎙️ Escucha nuestra Promo de Bienvenida 🎙️</span>  <div class="control-reproductor-pro">    <audio id="audio-reproductor-principal" class="reproductor-nativo" controls><source src="PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3" type="audio/mpeg"></audio>    <button id="btn-cambiar-fuente" class="selector-fuente">📻 Cambiar a Radio en Vivo</button>    <a href="https://udgtv.com/podcast/guadalajara" class="btn-podcast" target="blank">🎙️ Ir al Podcast Oficial</a>  </div></div></div><div class="columna-interactiva-bloque">
 <div class="flex-columna-cabecera">
   <div class="sorteo-contenedor">
     <div class="sorteo-cabecera">
