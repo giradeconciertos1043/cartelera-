@@ -25,17 +25,19 @@
     justify-content: stretch;
   }
 
-  /* Contenedor del Reproductor de Video en vivo (Modificado sin Grid de Chat) */
+  /* Contenedor del Reproductor de Video (Optimizado y disminuido de tamaño) */
   .transmision-split-grid {
     background: #0f172a;
     border: 2px solid #53fc18;
     border-radius: 12px;
     padding: 10px;
-    margin-bottom: 25px;
+    margin: 0 auto 25px auto;
     overflow: hidden;
+    max-width: 760px; /* Reducción de ancho para no dominar visualmente */
+    box-shadow: 0 4px 15px rgba(83, 252, 24, 0.15);
   }
 </style><script>
-  document.addEventListener('DOMContentLoaded', function() { 
+  document.addEventListener('DOMContentLoaded', function() {
     const audioControl = document.getElementById('audio-reproductor-principal');
     const btnCambiarFuente = document.getElementById('btn-cambiar-fuente');
     const indicadorEstado = document.getElementById('streaming-status-text');
@@ -66,7 +68,7 @@
       }
       audioControl.src = "https://stream.zeno.fm/9akhcnmh6ehvv";
       audioControl.load();
-      audioControl.play().catch(err => console.log('Error al conectar streaming:', err));
+      audioControl.play().catch(err => console.log('Error al conectar streaming en vivo:', err));
     }
 
     function conectarPromoDeBienvenida() {
