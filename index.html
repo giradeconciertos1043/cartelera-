@@ -4,6 +4,23 @@
   .selector-fuente { background: #1e293b; color: #f59e0b; border: 1px solid #f59e0b; padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85em; cursor: pointer; outline: none; margin-top: 5px; transition: all 0.2s; }
   .selector-fuente:hover { background: #f59e0b; color: #1e293b; }
 
+  /* Contenedor de Logos en Cabecera */
+  .logos-cabecera-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-programa {
+    max-height: 75px;
+    border-radius: 6px;
+    border: 1px solid #f59e0b;
+    background-color: #1e293b;
+    padding: 3px;
+    min-width: 75px;
+    min-height: 35px;
+    object-fit: contain;
+  }
+
   /* Contenedor Horizontal Adaptable de 3 Columnas */
   .contenedor-horizontal-interactivo {
     display: grid;
@@ -47,7 +64,7 @@
       audioControl.addEventListener('ended', function() {
         if (fuenteActual === 'promo') {
           conectarRadioEnVivo();
-        }
+        } 
       });
 
       btnCambiarFuente.addEventListener('click', function() {
@@ -83,7 +100,7 @@
       audioControl.play().catch(err => console.log('Error al reproducir la promo:', err));
     }
   });
-</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta-flex">  <div class="header-meta">🤖 Agenda Automatizada | Cortesías Activas</div>  <div class="header-clima-mini">  <span>📍 Guadalajara</span> |   <span>🌤️ <span class="destacado">24°C</span> (Despejado)</span> |   <span>🕒 <span id="reloj-dinamico-gdl" class="destacado">--:--:--</span></span></div></div></div><img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" /></div>
+</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta-flex">  <div class="header-meta">🤖 Agenda Automatizada | Cortesías Activas</div>  <div class="header-clima-mini">  <span>📍 Guadalajara</span> |   <span>🌤️ <span class="destacado">24°C</span> (Despejado)</span> |   <span>🕒 <span id="reloj-dinamico-gdl" class="destacado">--:--:--</span></span></div></div></div><div class="logos-cabecera-flex">  <img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" />  <img src="https://github.com/giradeconciertos1043/cartelera-/blob/main/Logo%20Preview.jpg?raw=true" class="logo-programa" alt="Gira de Conciertos" /></div></div>
 <div class="transmision-split-grid">
   <div style="position: relative; padding-top: 56.25%; height: 0;">
     <iframe src="https://player.kick.com/radioudeg?autoplay=true&muted=true"
@@ -276,7 +293,7 @@
                 <div>
                   <span class="fecha-tag">🗓️ 03 Dic 2026</span>
                   <h3 class="evento-nombre">Noche de Rock Alternativo: Babasónicos en vivo</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.facebook.com/GuanamorTeatroEstudio/" target="_blank" style="color:#f59e0b; text-decoration:none;">Guanamor Teatro Estudio</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://guanamorteatroestudio.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Guanamor Teatro Estudio</a></p>
                 </div>
                 <a href="https://guanamorteatroestudio.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
@@ -378,7 +395,7 @@
                 <div>
                   <span class="fecha-tag">🗓️ 30 Dic 2026</span>
                   <h3 class="evento-nombre">Eruca Sativa - Gira XV Años</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.facebook.com/GuanamorTeatroEstudio/" target="_blank" style="color:#f59e0b; text-decoration:none;">Guanamor Teatro Estudio</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://guanamorteatroestudio.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Guanamor Teatro Estudio</a></p>
                 </div>
                 <a href="https://guanamorteatroestudio.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
@@ -692,79 +709,6 @@ if (formAudio) {
     }
   });
 }
-</script>
-
-<script>
-(function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    const btnEnviar = document.getElementById('btn-enviar-cortesia');
-    const mensajeEstado = document.getElementById('mensaje-estado-cortesias');
-    const formCortesias = document.getElementById('form-sorteo-sheets');
-
-    if (btnEnviar && !btnEnviar.dataset.listenerActive) {
-      btnEnviar.dataset.listenerActive = "true";
-
-      btnEnviar.addEventListener('click', async function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const nombreVal = document.getElementById('part-nombre').value.trim();
-        const celularVal = document.getElementById('part-celular').value.trim();
-        const comentarioVal = document.getElementById('part-comentario').value.trim();
-
-        if (!nombreVal || !celularVal || !comentarioVal) {
-          alert("Por favor llena todos los campos del formulario de cortesías.");
-          return;
-        }
-
-        if (btnEnviar.disabled) return;
-
-        btnEnviar.disabled = true;
-        btnEnviar.textContent = "Registrando...";
-        mensajeEstado.style.color = "#f59e0b";
-        mensajeEstado.textContent = "⏳ Enviando tus datos a la lista de cortesías...";
-
-        const payload = {
-          tipo: "sorteo",
-          nombre: nombreVal,
-          sorteo: "tributo skap",
-          celular: celularVal,
-          comentario: comentarioVal
-        };
-
-        try {
-          const response = await fetch("https://script.google.com/macros/s/AKfycbwS7FZYEoAJy6C92kArMCFzJelPzPapwCWMIdyF7xr9wVmJCV9RIUnDoedvF_j68XR8Og/exec", {
-            redirect: "follow",
-            method: "POST",
-            headers: {
-              'Content-Type': 'text/plain;charset=utf-8'
-            },
-            body: JSON.stringify(payload)
-          });
-
-          const resData = await response.json();
-
-          if (resData.status === "success") {
-            mensajeEstado.style.color = "#10b981";
-            mensajeEstado.textContent = "🟢 ¡Registrado con éxito! Mucha suerte.";
-            if (formCortesias) formCortesias.reset();
-          } else {
-            mensajeEstado.style.color = "#ef4444";
-            mensajeEstado.textContent = "❌ Error al registrar: " + resData.message;
-          }
-        } catch (err) {
-          console.error(err);
-          mensajeEstado.style.color = "#10b981";
-          mensajeEstado.textContent = "🟢 ¡Registro procesado con éxito!";
-          if (formCortesias) formCortesias.reset();
-        } finally {
-          btnEnviar.disabled = false;
-          btnEnviar.textContent = "Registrarme por Cortesías  🚀";
-        }
-      });
-    }
-  });
-})();
 </script>
 
 <script>
