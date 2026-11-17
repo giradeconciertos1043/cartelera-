@@ -65,21 +65,21 @@
       audioControl.play().catch(err => console.log('Error al reproducir la promo:', err));
     }
   });
-</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1> Gira de Conciertos 104.3Fm </h1><div class="header-meta-flex">  <div class="header-meta"> Agenda Automatizada | Cortesías Activas</div>  <div class="header-clima-mini">  <span>📍 Guadalajara</span> |   <span>🌤️ <span class="destacado">24°C</span> (Despejado)</span> |   <span>🕒 <span id="reloj-dinamico-gdl" class="destacado">--:--:--</span></span></div></div></div><img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" /></div><div class="contenedor-horizontal-interactivo"><div class="columna-interactiva-bloque"><div class="reproductor-box" style="height: 100%; min-height: 250px;">  <span id="streaming-status-text"> Escucha nuestra Promo de Bienvenida </span>  <div class="control-reproductor-pro">    <audio id="audio-reproductor-principal" class="reproductor-nativo" controls><source src="PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3" type="audio/mpeg"></audio>    <button id="btn-cambiar-fuente" class="selector-fuente"> Cambiar a Radio en Vivo</button>    <a href="https://udgtv.com/podcast/guadalajara" class="btn-podcast" target="blank"> Ir al Podcast Oficial</a>  </div></div></div><div class="columna-interactiva-bloque">
+</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1> Gira de Conciertos 104.3Fm </h1><div class="header-meta-flex">  <div class="header-meta"> Agenda Automatizada | Cortesías Activas</div>  <div class="header-clima-mini">  <span>📍 Guadalajara</span> |   <span>🌤️ <span class="destacado">24°C</span> (Despejado)</span> |   <span>🕒 <span id="reloj-dinamico-gdl" class="destacado">--:--:--</span></span></div></div></div><img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" /></div><div class="contenedor-horizontal-interactivo"><div class="columna-interactiva-bloque"><div class="reproductor-box" style="height: 100%; min-height: 250px;">  <span id="streaming-status-text"> Escucha nuestra Promo de Bienvenida </span>  <div class="control-reproductor-pro">    <audio id="audio-reproductor-principal" class="reproductor-nativo" controls><source src="PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3" type="audio/mpeg"></audio>    <button id="btn-cambiar-fuente" class="selector-fuente"> Cambiar a Radio en Vivo</button>    <a href="https://udgtv.com/podcast/guadalajara" class="btn-podcast" target="blank"> Ir al Podcast Oficial</a>  </div></div></div><div class="columna-interactiva-bloque">
 <div class="flex-columna-cabecera">
   <div class="sorteo-contenedor">
     <div class="sorteo-cabecera">
-      <span style="font-size: 1.3em;"> 🎫</span>
+      <span style="font-size: 1.3em;">🎫</span>
       <h3 class="sorteo-titulo">Cortesías de la Semana</h3>
     </div>
     <p class="sorteo-subtitulo">¡Participa por tus pases para: <strong style="color:#f59e0b;">tributo skap</strong>!</p>
 
-    <form id="form-sorteo-sheets" class="sorteo-formulario" onsubmit="return false">
+    <form id="form-sorteo-sheets" class="sorteo-formulario" onsubmit="return false;">
       <input class="sorteo-input" type="text" id="part-nombre" placeholder="Nombre Completo" required>
       <input class="sorteo-input" type="tel" id="part-celular" placeholder="Número de Celular" required>
       <input class="sorteo-input" type="text" id="part-comentario" placeholder="¿Por qué quieres ir al tokin?" required>
 
-      <button class="sorteo-boton" type="button" id="btn-enviar-cortesia">Registrarme por Cortesías  🚀</button>
+      <button class="sorteo-boton" type="button" id="btn-enviar-cortesia">Registrarme por Cortesías 🚀</button>
       <div id="mensaje-estado-cortesias" style="font-size: 0.85em; margin-top: 8px; text-align: center; font-weight: bold;"></div>
     </form>
   </div>
@@ -123,7 +123,7 @@
       <input class="sorteo-input" type="text" id="chat-nombre" placeholder="Tu Nombre / Apodo" required>
       <input class="sorteo-input" type="text" id="chat-mensaje" placeholder="Escribe tu mensaje aquí..." required>
 
-      <button class="sorteo-boton" type="button" id="btn-enviar-chat" style="background: #38bdf8; color: #0f172a;">Enviar Mensaje  ✈️</button>
+      <button class="sorteo-boton" type="button" id="btn-enviar-chat" style="background: #38bdf8; color: #0f172a;">Enviar Mensaje ✈️</button>
       <div id="mensaje-estado-chat" style="font-size: 0.85em; margin-top: 8px; text-align: center; font-weight: bold;"></div>
     </form>
   </div>
@@ -565,7 +565,7 @@ if (formAudio) {
           if (formCortesias) formCortesias.reset();
         } finally {
           btnEnviar.disabled = false;
-          btnEnviar.textContent = "Registrarme por Cortesías  🚀";
+          btnEnviar.textContent = "Registrarme por Cortesías  🚀";
         }
       });
     }
@@ -612,9 +612,9 @@ if (formAudio) {
           mensajeEstadoChat.style.color = "#10b981";
           mensajeEstadoChat.textContent = "🟢 ¡Mensaje enviado con éxito!";
           document.getElementById('chat-mensaje').value = "";
-        } finally {
+        } finally { 
           btnChat.disabled = false;
-          btnChat.textContent = "Enviar Mensaje  ✈2";
+          btnChat.textContent = "Enviar Mensaje ✈️";
         }
       });
     }
@@ -670,7 +670,7 @@ if (formAudio) {
           if (formCortesias) formCortesias.reset();
         } finally {
           btnEnviar.disabled = false;
-          btnEnviar.textContent = "Registrarme por Cortesías  🚀";
+          btnEnviar.textContent = "Registrarme por Cortesías  🚀";
         }
       });
     }
@@ -717,9 +717,9 @@ if (formAudio) {
           mensajeEstadoChat.style.color = "#10b981";
           mensajeEstadoChat.textContent = "🟢 ¡Mensaje enviado con éxito!";
           document.getElementById('chat-mensaje').value = "";
-        } finally {
+        } finally { 
           btnChat.disabled = false;
-          btnChat.textContent = "Enviar Mensaje  ✈2";
+          btnChat.textContent = "Enviar Mensaje ✈️";
         }
       });
     }
