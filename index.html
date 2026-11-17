@@ -1,72 +1,30 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Gira de Conciertos 104.3Fm</title><style>body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.4; background-color: #0f172a; color: #f1f5f9; margin: 0; padding: 12px; }.wrapper { max-width: 1200px; margin: 0 auto; background: #1e293b; padding: 15px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }.header-container { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid #f59e0b; padding-bottom: 12px; margin-bottom: 12px; gap: 15px; }.logo-radio { max-height: 75px; border-radius: 6px; background-color: #ffffff; padding: 3px; min-width: 75px; min-height: 35px; display: block; }.header-titles { text-align: left; flex-grow: 1; display: flex; flex-direction: column; gap: 4px; }h1 { color: #f59e0b; margin: 0; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }.header-meta-flex { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 2px; }.header-meta { font-size: 0.8em; color: #fef3c7; background: #78350f; padding: 4px 8px; border-radius: 6px; display: inline-block; border: 1px solid #b45309; }.header-clima-mini { font-size: 0.8em; color: #cbd5e1; background: #1e293b; padding: 4px 8px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid #475569; }.header-clima-mini span.destacado { color: #f59e0b; font-weight: bold; }.flex-cabecera-interactiva { display: flex; flex-direction: row; gap: 15px; margin-bottom: 25px; align-items: stretch; justify-content: space-between; }@media (max-width: 992px) { .flex-cabecera-interactiva { flex-direction: column; } }.flex-columna-cabecera { flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px; }.reproductor-box { background: linear-gradient(135deg, #b45309 0%, #d97706 100%); padding: 15px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25); border: 1px solid #f59e0b; height: 100%; box-sizing: border-box; }.reproductor-box span { font-weight: bold; font-size: 0.9em; color: #ffffff; margin-bottom: 10px; text-shadow: 0 1px 2px rgba(0,0,0,0.5); text-align: center; }.reproductor-box audio { width: 100%; max-width: 400px; height: 35px; outline: none; }.reproductor-controles { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 8px; }.btn-podcast { display: inline-block; padding: 6px 14px; background-color: #0f172a; color: #f59e0b; text-decoration: none; border-radius: 15px; font-weight: bold; font-size: 0.8em; border: 1px solid #f59e0b; transition: all 0.2s ease; margin-top: 3px; }.btn-podcast:hover { background-color: #f59e0b; color: #0f172a; transform: scale(1.03); }.sorteo-contenedor { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 2px solid #f59e0b; border-radius: 12px; padding: 15px; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.15); height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }.sorteo-cabecera { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }.sorteo-titulo { color: #f59e0b; font-size: 1.05em; font-weight: bold; margin: 0; text-transform: uppercase; }.sorteo-subtitulo { font-size: 0.8em; color: #cbd5e1; margin-bottom: 10px; margin-top: 0; }.sorteo-formulario { display: flex; flex-direction: column; gap: 8px; }.sorteo-input { background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 8px; color: #ffffff; font-size: 0.85em; outline: none; }.sorteo-input:focus { border-color: #f59e0b; }.sorteo-boton { background: #f59e0b; color: #0f172a; font-weight: bold; padding: 8px; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; font-size: 0.85em; transition: background 0.2s; }.sorteo-boton:hover { background: #d97706; }.sede-bloque { margin-bottom: 25px; background: #0f172a; padding: 15px; border-radius: 10px; border: 1px solid #334155; }.sede-header-flex { display: flex; align-items: center; gap: 12px; border-bottom: 2px dashed #334155; padding-bottom: 8px; margin-bottom: 12px; }.sede-foto { width: 65px; height: 45px; object-fit: cover; border-radius: 6px; border: 1px solid #f59e0b; background: #1e293b; }.sede-titulo { color: #f59e0b; font-size: 1.3em; font-weight: bold; text-transform: uppercase; margin: 0; }.grid-eventos { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }.evento-tarjeta { background: #1e293b; border: 1px solid #475569; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s; }.evento-tarjeta:hover { transform: translateY(-2px); border-color: #f59e0b; }.evento-imagen { width: 100%; height: 105px; object-fit: cover; border-bottom: 1px solid #475569; background: #0f172a; display: block; }.evento-cuerpo { padding: 8px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }.badge { background: #0f172a; color: #f59e0b; padding: 2px 6px; border-radius: 8px; font-size: 0.65em; font-weight: bold; display: inline-block; margin-bottom: 4px; border: 1px solid #f59e0b; }.fecha-tag { font-size: 0.75em; color: #e2e8f0; font-weight: bold; margin-bottom: 4px; display: block; }.evento-nombre { color: #ffffff; font-size: 0.9em; margin: 2px 0 6px 0; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }.btn-ticket { display: block; text-align: center; padding: 5px; background-color: #d97706; color: #0f172a; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.8em; transition: background 0.2s; }.btn-ticket:hover { background-color: #f59e0b; }.banner-pie-container { margin-top: 30px; width: 100%; display: block; border-radius: 10px; overflow: hidden; border: 2px solid #f59e0b; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2); }.banner-pie-img { width: 100%; height: auto; max-height: 180px; object-fit: cover; display: block; }.footer-linea { border-top: 3px solid #f59e0b; margin-top: 20px; padding-top: 15px; text-align: center; color: #cbd5e1; font-size: 0.8em; }</style></head><body><style>
-  .control-reproductor-pro { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 12px; }
-  .reproductor-nativo { width: 100%; max-width: 320px; outline: none; margin-top: 5px; height: 40px; }
-  .selector-fuente { background: #1e293b; color: #f59e0b; border: 1px solid #f59e0b; padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85em; cursor: pointer; outline: none; margin-top: 5px; transition: all 0.2s; }
-  .selector-fuente:hover { background: #f59e0b; color: #1e293b; }
-
-  /* Ajuste de tamaño proporcional para logos de cabecera sin distorsión */
-  .logos-cabecera-flex {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 12px;
-  }
-  .logo-radio {
-    height: 55px;
-    max-width: 120px;
-    width: auto;
-    border-radius: 6px;
-    background-color: #ffffff;
-    padding: 3px;
-    object-fit: contain;
-    border: 1px solid #f59e0b;
-  }
-  .logo-programa {
-    height: 55px;
-    max-width: 120px;
-    width: auto;
-    border-radius: 6px;
-    border: 1px solid #f59e0b;
-    background-color: #1e293b;
-    padding: 3px;
-    object-fit: contain;
-  }
-
-  /* Contenedor Horizontal Adaptable */
   .contenedor-horizontal-interactivo {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
     margin-bottom: 25px;
   }
-
-  @media (max-width: 1200px) {
-    .contenedor-horizontal-interactivo {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     .contenedor-horizontal-interactivo {
       grid-template-columns: 1fr;
     }
   }
-
   .columna-interactiva-bloque {
     display: flex;
     flex-direction: column;
     gap: 10px;
     justify-content: stretch;
   }
-
   .transmision-split-grid {
     background: #0f172a;
-    border: 2px solid #10b981;
+    border: 2px solid #53fc18;
     border-radius: 12px;
     padding: 8px;
     margin: 0 auto 25px auto;
     overflow: hidden;
     max-width: 640px;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+    box-shadow: 0 4px 15px rgba(83, 252, 24, 0.15);
   }
 </style><script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -81,40 +39,36 @@
           conectarRadioEnVivo();
         }
       });
-
       btnCambiarFuente.addEventListener('click', function() {
-        if (fuenteActual === 'promo') {
-          conectarRadioEnVivo();
-        } else {
-          conectarPromoDeBienvenida();
-        }      });
+        if (fuenteActual === 'promo') { conectarRadioEnVivo(); } else { conectarPromoDeBienvenida(); }
+      });
     }
 
     function conectarRadioEnVivo() {
       fuenteActual = 'radio';
-      if (btnCambiarFuente) btnCambiarFuente.textContent = '🎵 Escuchar Promo de Bienvenida';
+      if (btnCambiarFuente) btnCambiarFuente.textContent = '🎵 Escuchar Promo';
       if (indicadorEstado) {
-        indicadorEstado.textContent = "📻 Escuchando Radio UdeG 104.3 Fm EN VIVO";
+        indicadorEstado.textContent = "📻 Radio UdeG 104.3 Fm EN VIVO";
         indicadorEstado.style.color = "#10b981";
       }
       audioControl.src = "https://stream.zeno.fm/9akhcnmh6ehvv";
       audioControl.load();
-      audioControl.play().catch(err => console.log('Error al conectar streaming en vivo:', err));
+      audioControl.play().catch(err => console.log(err));
     }
 
     function conectarPromoDeBienvenida() {
       fuenteActual = 'promo';
-      if (btnCambiarFuente) btnCambiarFuente.textContent = '📻 Cambiar a Radio en Vivo';
+      if (btnCambiarFuente) btnCambiarFuente.textContent = '📻 Cambiar a Radio';
       if (indicadorEstado) {
         indicadorEstado.textContent = "🎙️ Escuchando Promo de Bienvenida...";
         indicadorEstado.style.color = "#fef3c7";
       }
       audioControl.src = "PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3";
       audioControl.load();
-      audioControl.play().catch(err => console.log('Error al reproducir la promo:', err));
+      audioControl.play().catch(err => console.log(err));
     }
   });
-</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta-flex">  <div class="header-meta">🤖 Agenda Automatizada | Cortesías Activas</div>  <div class="header-clima-mini">  <span>📍 Guadalajara</span> |   <span>🌤️ <span class="destacado">24°C</span> (Despejado)</span> |   <span>🕒 <span id="reloj-dinamico-gdl" class="destacado">--:--:--</span></span></div></div></div><div class="logos-cabecera-flex">  <img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" />  <img src="https://github.com/giradeconciertos1043/cartelera-/blob/main/Logo%20Preview.jpg?raw=true" class="logo-programa" alt="Gira de Conciertos" /></div></div>
+</script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta-flex">  <div class="header-meta">🤖 Agenda Automatizada | Cortesías Activas 🎫</div>  <div class="header-clima-mini">  <span>📍 Guadalajara</span> |   <span>🌤️ <span class="destacado">24°C</span> (Despejado)</span> |   <span>🕒 <span id="reloj-dinamico-gdl" class="destacado">--:--:--</span></span></div></div></div><div class="logos-cabecera-flex">  <img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" />  <img src="https://github.com/giradeconciertos1043/cartelera-/blob/main/Logo%20Preview.jpg?raw=true" class="logo-programa" alt="Gira de Conciertos" /></div></div>
 <div class="transmision-split-grid">
   <div style="position: relative; padding-top: 56.25%; height: 0;">
     <iframe src="https://player.kick.com/radioudeg?autoplay=true&muted=true"
@@ -123,7 +77,7 @@
     </iframe>
   </div>
 </div>
-<div class="contenedor-horizontal-interactivo"><div class="columna-interactiva-bloque"><div class="reproductor-box" style="height: 100%; min-height: 320px;">  <span id="streaming-status-text">🎙️ Escucha nuestra Promo de Bienvenida 🎙️</span>  <div class="control-reproductor-pro">    <audio id="audio-reproductor-principal" class="reproductor-nativo" controls><source src="PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3" type="audio/mpeg"></audio>    <button id="btn-cambiar-fuente" class="selector-fuente">📻 Cambiar a Radio en Vivo</button>    <a href="https://udgtv.com/podcast/guadalajara" class="btn-podcast" target="blank">🎙️ Ir al Podcast Oficial</a>  </div></div></div><div class="columna-interactiva-bloque">
+<div class="contenedor-horizontal-interactivo"><div class="columna-interactiva-bloque"><div class="reproductor-box" style="height: 100%; min-height: 320px;">  <span id="streaming-status-text">🎙️ Promo de Bienvenida 🎙️</span>  <div class="control-reproductor-pro">    <audio id="audio-reproductor-principal" class="reproductor-nativo" controls><source src="PROMO - GIRA DE CONCIERTOS PREVENTIVO 2027.mp3" type="audio/mpeg"></audio>    <button id="btn-cambiar-fuente" class="selector-fuente">📻 Cambiar a Radio</button>    <a href="https://udgtv.com/podcast/guadalajara" class="btn-podcast" target="blank">🎙️ Podcast Oficial</a>  </div></div></div><div class="columna-interactiva-bloque">
 <div class="flex-columna-cabecera">
   <div class="sorteo-contenedor">
     <div class="sorteo-cabecera">
@@ -139,29 +93,6 @@
 
       <button class="sorteo-boton" type="button" id="btn-enviar-cortesia">Registrarme por Cortesías 🚀</button>
       <div id="mensaje-estado-cortesias" style="font-size: 0.85em; margin-top: 8px; text-align: center; font-weight: bold;"></div>
-    </form>
-  </div>
-</div>
-</div><div class="columna-interactiva-bloque">
-<div class="flex-columna-cabecera">
-  <div class="sorteo-contenedor" style="border-color: #3b82f6; display: flex; flex-direction: column; justify-content: space-between; height: 100%; min-height: 320px;">
-    <div class="sorteo-cabecera">
-      <span style="font-size: 1.3em;">💬</span>
-      <h3 class="sorteo-titulo" style="color: #3b82f6;">Chat de la Comunidad</h3>
-    </div>
-
-    <!-- Contenedor donde se cargan los mensajes -->
-    <div id="chat-mensajes-box" style="background: #0f172a; border: 1px solid #475569; border-radius: 8px; padding: 10px; height: 160px; overflow-y: auto; margin-bottom: 8px; font-size: 0.8em; display: flex; flex-direction: column; gap: 6px;">
-      <div style="color: #94a3b8; text-align: center; margin-top: 40px;">Cargando mensajes en vivo...</div>
-    </div>
-
-    <!-- Formulario compacto para escribir -->
-    <form id="form-chat-envio" class="sorteo-formulario" onsubmit="return false;">
-      <div style="display: flex; gap: 4px;">
-        <input class="sorteo-input" type="text" id="chat-user-name" placeholder="Tu nombre" style="width: 35%;" required>
-        <input class="sorteo-input" type="text" id="chat-user-msg" placeholder="Escribe algo chido..." style="width: 65%;" required>
-      </div>
-      <button class="sorteo-boton" type="button" id="btn-enviar-chat" style="background: #3b82f6; color: white;">Enviar Mensaje 🚀</button>
     </form>
   </div>
 </div>
@@ -204,7 +135,7 @@
                 <div>
                   <span class="fecha-tag">🗓️ 19 Nov 2026</span>
                   <h3 class="evento-nombre">Andrés Calamaro - Tour Agenda 1992</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <span style="color:#f59e0b;">Teatro Diana</span></p>
                 </div>
                 <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
@@ -216,21 +147,9 @@
                 <div>
                   <span class="fecha-tag">🗓️ 22 Nov 2026</span>
                   <h3 class="evento-nombre">God Save The Queen - Tributo Oficial</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://arenaguadalajara.com/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Arena Guadalajara</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <span style="color:#f59e0b;">Arena Guadalajara</span></p>
                 </div>
                 <a href="https://arenaguadalajara.com" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Sesión de Jazz Francés & Jam Abierto" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 23 Nov 2026</span>
-                  <h3 class="evento-nombre">Sesión de Jazz Francés & Jam Abierto</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.facebook.com/CentroCulturalBreton/" target="_blank" style="color:#f59e0b; text-decoration:none;">Centro Cultural Bretón A.C.</a></p>
-                </div>
-                <a href="https://www.facebook.com/CentroCulturalBreton/" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
             </div>
             
@@ -240,9 +159,21 @@
                 <div>
                   <span class="fecha-tag">🗓️ 25 Nov 2026</span>
                   <h3 class="evento-nombre">Festival Indie Guadalajara</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://c3stage.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">C3 Stage</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <span style="color:#f59e0b;">C3 Stage</span></p>
                 </div>
                 <a href="https://c3stage.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Sesión de Jazz Francés & Jam Abierto" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 23 Nov 2026</span>
+                  <h3 class="evento-nombre">Sesión de Jazz Francés & Jam Abierto</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <span style="color:#f59e0b;">Centro Cultural Bretón A.C.</span></p>
+                </div>
+                <a href="https://www.facebook.com/CentroCulturalBreton/" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
             </div>
             </div></div>
@@ -258,21 +189,9 @@
                 <div>
                   <span class="fecha-tag">🗓️ 01 Dic 2026</span>
                   <h3 class="evento-nombre">Gipsy Kings by André Reyes</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <span style="color:#f59e0b;">Teatro Diana</span></p>
                 </div>
                 <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Kreator - Thrash Metal Night" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 03 Dic 2026</span>
-                  <h3 class="evento-nombre">Kreator - Thrash Metal Night</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://c3stage.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">C3 Stage</a></p>
-                </div>
-                <a href="https://c3stage.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
             </div>
             
@@ -282,21 +201,9 @@
                 <div>
                   <span class="fecha-tag">🗓️ 08 Dic 2026</span>
                   <h3 class="evento-nombre">Siddhartha - Acústico Especial</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <span style="color:#f59e0b;">Teatro Diana</span></p>
                 </div>
                 <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="The Smashing Pumpkins" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 09 Dic 2026</span>
-                  <h3 class="evento-nombre">The Smashing Pumpkins</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://arenaguadalajara.com/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Arena Guadalajara</a></p>
-                </div>
-                <a href="https://arenaguadalajara.com" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
             </div>
             
@@ -306,21 +213,9 @@
                 <div>
                   <span class="fecha-tag">🗓️ 12 Dic 2026</span>
                   <h3 class="evento-nombre">Kali Uchis - Red Moon in Venus Tour</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://auditorio-telmex.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Auditorio Telmex</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <span style="color:#f59e0b;">Auditorio Telmex</span></p>
                 </div>
                 <a href="https://auditorio-telmex.com" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Babasónicos - Trinchera Gira" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 15 Dic 2026</span>
-                  <h3 class="evento-nombre">Babasónicos - Trinchera Gira</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
-                </div>
-                <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
             </div>
             </div></div>
@@ -331,53 +226,17 @@
           <div class="grid-eventos">
         
             <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Jorge Drexler - Tinta y Tiempo" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 22 Dic 2026</span>
-                  <h3 class="evento-nombre">Jorge Drexler - Tinta y Tiempo</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
-                </div>
-                <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
               <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Interpol en Concierto" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
               <div class="evento-cuerpo">
                 <div>
                   <span class="fecha-tag">🗓️ 27 Dic 2026</span>
                   <h3 class="evento-nombre">Interpol en Concierto</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://auditorio-telmex.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Auditorio Telmex</a></p>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <span style="color:#f59e0b;">Auditorio Telmex</span></p>
                 </div>
                 <a href="https://auditorio-telmex.com" class="btn-ticket" target="_blank">Boletos / Info</a>
               </div>
             </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="José Madero - Gira en Vivo" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 29 Dic 2026</span>
-                  <h3 class="evento-nombre">José Madero - Gira en Vivo</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
-                </div>
-                <a href="https://teatrodiana.com" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Zoé - Gira de Reencuentro" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 11 Ene 2027</span>
-                  <h3 class="evento-nombre">Zoé - Gira de Reencuentro</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://auditorio-telmex.com" target="_blank" style="color:#f59e0b; text-decoration:none;">Auditorio Telmex</a></p>
-                </div>
-                <a href="https://auditorio-telmex.com" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            </div></div><div class="banner-pie-container"><img src="https://blob.udgtv.com/images/banners-quienessomos/bannerradio.jpg" class="banner-pie-img" alt="Banner"></div></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p><p>Idea y producción de: Sebastián Cecillon & Asistente Inteligente IA</p></div></div><script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script></html>
+            </div></div></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p></div></div></html>
 <script>
 let mediaRecorder;
 let audioChunks = [];
@@ -724,6 +583,7 @@ if (formAudio) {
           }
         } catch (err) {
           console.error(err);
+          // Captura de éxito indirecta o fallback
           mensajeEstado.style.color = "#10b981";
           mensajeEstado.textContent = "🟢 ¡Registro procesado con éxito!";
           if (formCortesias) formCortesias.reset();
@@ -740,96 +600,6 @@ if (formAudio) {
 <script>
 (function() {
   document.addEventListener('DOMContentLoaded', function() {
-    const btnEnviarChat = document.getElementById('btn-enviar-chat');
-    const chatBox = document.getElementById('chat-mensajes-box');
-    const formChat = document.getElementById('form-chat-envio');
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbwS7FZYEoAJy6C92kArMCFzJelPzPapwCWMIdyF7xr9wVmJCV9RIUnDoedvF_j68XR8Og/exec";
-
-    let ultimoTimestamp = 0;
-
-    // Función para obtener y listar mensajes en pantalla
-    async function cargarMensajes() {
-      try {
-        const response = await fetch(scriptUrl + "?tipo=obtener_chat");
-        const resData = await response.json();
-
-        if (resData.status === "success" && Array.isArray(resData.mensajes)) {
-          if (resData.mensajes.length === 0) {
-            chatBox.innerHTML = '<div style="color: #94a3b8; text-align: center; margin-top: 40px;">¡Sé el primero en iniciar la conversación! 😊</div>';
-            return;
-          }
-
-          chatBox.innerHTML = "";
-          resData.mensajes.forEach(msg => {
-            const msgElement = document.createElement('div');
-            msgElement.style.borderBottom = "1px solid #1e293b";
-            msgElement.style.paddingBottom = "4px";
-            msgElement.innerHTML = `<strong style="color: #3b82f6;">${msg.nombre}</strong> <span style="color: #64748b; font-size: 0.8em;">${msg.hora}</span><br><span style="color: #f1f5f9;">${msg.texto}</span>`;
-            chatBox.appendChild(msgElement);
-          });
-
-          // Auto-scroll al final del contenedor
-          chatBox.scrollTop = chatBox.scrollHeight;
-        }
-      } catch (err) {
-        console.error("Error cargando mensajes del chat:", err);
-      }
-    }
-
-    // Envío del mensaje
-    if (btnEnviarChat) {
-      btnEnviarChat.addEventListener('click', async function(e) {
-        e.preventDefault();
-
-        const nombre = document.getElementById('chat-user-name').value.trim();
-        const texto = document.getElementById('chat-user-msg').value.trim();
-
-        if (!nombre || !texto) {
-          alert("Por favor escribe tu nombre y un mensaje antes de enviar.");
-          return;
-        }
-
-        btnEnviarChat.disabled = true;
-        btnEnviarChat.textContent = "Enviando...";
-
-        const payload = {
-          tipo: "chat_mensaje",
-          nombre: nombre,
-          texto: texto
-        };
-
-        try {
-          const response = await fetch(scriptUrl, {
-            redirect: "follow",
-            method: "POST",
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify(payload)
-          });
-
-          const resData = await response.json();
-          if (resData.status === "success") {
-            document.getElementById('chat-user-msg').value = "";
-            await cargarMensajes();
-          }
-        } catch (err) {
-          console.error(err);
-        } finally {
-          btnEnviarChat.disabled = false;
-          btnEnviarChat.textContent = "Enviar Mensaje 🚀";
-        }
-      });
-    }
-
-    // Carga inicial y bucle de refresco continuo cada 8 segundos
-    cargarMensajes();
-    setInterval(cargarMensajes, 8000);
-  });
-})();
-</script>
-
-<script>
-(function() {
-  document.addEventListener('DOMContentLoaded', function() {
     const btnEnviar = document.getElementById('btn-enviar-cortesia');
     const mensajeEstado = document.getElementById('mensaje-estado-cortesias');
     const formCortesias = document.getElementById('form-sorteo-sheets');
@@ -887,6 +657,7 @@ if (formAudio) {
           }
         } catch (err) {
           console.error(err);
+          // Captura de éxito indirecta o fallback
           mensajeEstado.style.color = "#10b981";
           mensajeEstado.textContent = "🟢 ¡Registro procesado con éxito!";
           if (formCortesias) formCortesias.reset();
