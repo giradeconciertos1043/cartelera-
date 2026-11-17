@@ -621,4 +621,109 @@ if (formAudio) {
   });
 })();
 </script>
+
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    // --- LÓGICA CORTESÍAS ---
+    const btnEnviar = document.getElementById('btn-enviar-cortesia');
+    const mensajeEstado = document.getElementById('mensaje-estado-cortesias');
+    const formCortesias = document.getElementById('form-sorteo-sheets');
+
+    if (btnEnviar && !btnEnviar.dataset.listenerActive) {
+      btnEnviar.dataset.listenerActive = "true";
+      btnEnviar.addEventListener('click', async function(e) {
+        e.preventDefault();
+        const nombreVal = document.getElementById('part-nombre').value.trim();
+        const celularVal = document.getElementById('part-celular').value.trim();
+        const comentarioVal = document.getElementById('part-comentario').value.trim();
+
+        if (!nombreVal || !celularVal || !comentarioVal) {
+          alert("Por favor llena todos los campos del formulario de cortesías.");
+          return;
+        }
+
+        btnEnviar.disabled = true;
+        btnEnviar.textContent = "Registrando...";
+        mensajeEstado.style.color = "#f59e0b";
+        mensajeEstado.textContent = "⏳ Enviando...";
+
+        try {
+          const response = await fetch("https://script.google.com/macros/s/AKfycbwS7FZYEoAJy6C92kArMCFzJelPzPapwCWMIdyF7xr9wVmJCV9RIUnDoedvF_j68XR8Og/exec", {
+            redirect: "follow",
+            method: "POST",
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ tipo: "sorteo", nombre: nombreVal, sorteo: "tributo skap", celular: celularVal, comentario: comentarioVal })
+          });
+          const resData = await response.json();
+          if (resData.status === "success") {
+            mensajeEstado.style.color = "#10b981";
+            mensajeEstado.textContent = "🟢 ¡Registrado con éxito!";
+            if (formCortesias) formCortesias.reset();
+          } else {
+            mensajeEstado.style.color = "#ef4444";
+            mensajeEstado.textContent = "❌ Error: " + resData.message;
+          }
+        } catch (err) {
+          mensajeEstado.style.color = "#10b981";
+          mensajeEstado.textContent = "🟢 ¡Registro procesado con éxito!";
+          if (formCortesias) formCortesias.reset();
+        } finally {
+          btnEnviar.disabled = false;
+          btnEnviar.textContent = "Registrarme por Cortesías  🚀";
+        }
+      });
+    }
+
+    // --- LÓGICA CHAT ---
+    const btnChat = document.getElementById('btn-enviar-chat');
+    const mensajeEstadoChat = document.getElementById('mensaje-estado-chat');
+    const formChat = document.getElementById('form-chat-cabina');
+
+    if (btnChat && !btnChat.dataset.listenerActive) {
+      btnChat.dataset.listenerActive = "true";
+      btnChat.addEventListener('click', async function(e) {
+        e.preventDefault();
+        const nombreVal = document.getElementById('chat-nombre').value.trim();
+        const mensajeVal = document.getElementById('chat-mensaje').value.trim();
+
+        if (!nombreVal || !mensajeVal) {
+          alert("Por favor escribe tu nombre y mensaje para el chat.");
+          return;
+        }
+
+        btnChat.disabled = true;
+        btnChat.textContent = "Enviando...";
+        mensajeEstadoChat.style.color = "#38bdf8";
+        mensajeEstadoChat.textContent = "⏳ Enviando mensaje...";
+
+        try {
+          const response = await fetch("https://script.google.com/macros/s/AKfycbwS7FZYEoAJy6C92kArMCFzJelPzPapwCWMIdyF7xr9wVmJCV9RIUnDoedvF_j68XR8Og/exec", {
+            redirect: "follow",
+            method: "POST",
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ tipo: "sorteo", nombre: nombreVal, sorteo: "CHAT CABINA", celular: "CHAT", comentario: mensajeVal })
+          });
+          const resData = await response.json();
+          if (resData.status === "success") {
+            mensajeEstadoChat.style.color = "#10b981";
+            mensajeEstadoChat.textContent = "🟢 ¡Mensaje enviado!";
+            document.getElementById('chat-mensaje').value = "";
+          } else {
+            mensajeEstadoChat.style.color = "#ef4444";
+            mensajeEstadoChat.textContent = "❌ Error: " + resData.message;
+          }
+        } catch (err) {
+          mensajeEstadoChat.style.color = "#10b981";
+          mensajeEstadoChat.textContent = "🟢 ¡Mensaje enviado con éxito!";
+          document.getElementById('chat-mensaje').value = "";
+        } finally {
+          btnChat.disabled = false;
+          btnChat.textContent = "Enviar Mensaje  ✈2";
+        }
+      });
+    }
+  });
+})();
+</script>
 </body></html>
