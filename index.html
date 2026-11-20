@@ -17,7 +17,7 @@
     .contenedor-horizontal-interactivo { grid-template-columns: 1fr; }
   }
   .columna-interactiva-bloque {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     gap: 10px;
     justify-content: stretch;
@@ -124,14 +124,67 @@
     }
   });
 </script><div class="wrapper"><div class="header-container"><div class="header-titles"><h1>🎵 Gira de Conciertos 104.3Fm 🎵</h1><div class="header-meta-flex">  <div class="header-meta">🤖 Agenda Automatizada | Chat Activo 💬</div>  <div class="header-clima-mini">  <span>📍 Guadalajara</span> |   <span>🌤️ <span class="destacado">24°C</span> (Despejado)</span> |   <span>🕒 <span id="reloj-dinamico-gdl" class="destacado">--:--:--</span></span></div></div></div><div class="logos-cabecera-flex">  <img src="https://udgtv.blob.core.windows.net/images/2023/07/24/107340777969802870119061041411321052937792n-b5b8f667.jpg" class="logo-radio" alt="UdeG Radio 104.3" crossorigin="anonymous" />  <img src="https://github.com/giradeconciertos1043/cartelera-/blob/main/Logo%20Preview.jpg?raw=true" class="logo-programa" alt="Gira de Conciertos" /></div></div>
-    <div class="banner-al-aire-sistema" style="background: linear-gradient(90deg, #10b981 0%, #059669 100%); border: 1px solid #34d399; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); animation: pulse-neon 2s infinite;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <span class="indicador-punto-verde" style="height: 12px; width: 12px; background-color: #fff; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #fff;"></span>
-        <span style="font-weight: bold; color: #ffffff; font-size: 0.95em;">🟢 ¡ESTAMOS AL AIRE EN VIVO! Escúchanos en el 104.3 FM</span>
-      </div>
-      <span style="font-size: 0.8em; background: rgba(0,0,0,0.2); padding: 3px 8px; border-radius: 12px; color: #fff; font-weight: bold;">Martes de 10:00 PM  a 11:00 PM</span>
-    </div>
+<div id="banner-al-aire-dinamico" class="banner-al-aire-sistema" style="padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; transition: all 0.5s ease;">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <span id="indicador-punto-estado" style="height: 12px; width: 12px; border-radius: 50%; display: inline-block; transition: all 0.5s ease;"></span>
+    <span id="texto-estado-programa" style="font-weight: bold; font-size: 0.95em; transition: all 0.5s ease;">Calculando estado de transmisión...</span>
+  </div>
+  <span style="font-size: 0.8em; background: rgba(0,0,0,0.25); padding: 4px 10px; border-radius: 12px; color: #ffffff; font-weight: bold;">Martes de 10:00 PM a 11:00 PM</span>
+</div>
+
+<script>
+(function() {
+  function verificarEstadoAlAire() {
+    const banner = document.getElementById('banner-al-aire-dinamico');
+    const punto = document.getElementById('indicador-punto-estado');
+    const texto = document.getElementById('texto-estado-programa');
+
+    if (!banner || !punto || !texto) return;
+
+    // Obtener la fecha y hora en la zona horaria de Guadalajara/México
+    const ahoraMexico = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"}));
     
+    const diaSemana = ahoraMexico.getDay(); // 0 = Domingo, 2 = Martes, etc.
+    const hora = ahoraMexico.getHours();
+    const minutos = ahoraMexico.getMinutes();
+
+    // Definición del horario del programa: Martes de 10:00 PM a 11:00 PM (Hora 22:00 a 22:59)
+    const esMartes = (diaSemana === 2);
+    const esHorarioEmision = (hora === 22);
+
+    if (esMartes && esHorarioEmision) {
+      // ESTADO: AL AIRE EN VIVO (Verde)
+      banner.style.background = "linear-gradient(90deg, #10b981 0%, #059669 100%)";
+      banner.style.border = "1px solid #34d399";
+      banner.style.boxShadow = "0 0 15px rgba(16, 185, 129, 0.4)";
+      banner.style.animation = "pulse-neon 2s infinite";
+      
+      punto.style.backgroundColor = "#ffffff";
+      punto.style.boxShadow = "0 0 8px #ffffff";
+      
+      texto.textContent = "🟢 ¡ESTAMOS AL AIRE EN VIVO! Escúchanos en el 104.3 FM";
+      texto.style.color = "#ffffff";
+    } else {
+      // ESTADO: FUERA DEL AIRE (Rojo / Oscuro)
+      banner.style.background = "#1e293b";
+      banner.style.border = "1px solid #ef4444";
+      banner.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+      banner.style.animation = "none";
+      
+      punto.style.backgroundColor = "#ef4444";
+      punto.style.boxShadow = "0 0 8px #ef4444";
+      
+      texto.textContent = "🔴 Programa Fuera del Aire | Sintoniza nuestro podcast";
+      texto.style.color = "#cbd5e1";
+    }
+  }
+
+  // Ejecutar validación inmediata y programar bucle cada 15 segundos para mantenerlo sincronizado
+  document.addEventListener('DOMContentLoaded', verificarEstadoAlAire);
+  setInterval(verificarEstadoAlAire, 15000);
+})();
+</script>
+
 <div class="transmision-split-grid">
   <div class="kick-video-box">
     <iframe src="https://player.kick.com/radioudeg?autoplay=true&muted=true"
