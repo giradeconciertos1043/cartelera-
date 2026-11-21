@@ -50,7 +50,7 @@
     background: #1e293b;
     border-radius: 8px;
     padding: 15px;
-    display: flex;
+    display: flex; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -498,6 +498,18 @@
             </div>
             
             <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="C4 Rock Fest - Edición Guadalajara" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 05 Dic 2026</span>
+                  <h3 class="evento-nombre">C4 Rock Fest - Edición Guadalajara</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://c4concerthouse.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">C4 Concert House</a></p>
+                </div>
+                <a href="https://c4concerthouse.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
               <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Gala de Piano y Música de Cámara" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
               <div class="evento-cuerpo">
                 <div>
@@ -931,6 +943,56 @@ function plusSlides(n) {
 }
 
 function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot-slide");
+  if (!slides.length) return;
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    slides[i].classList.remove("active");
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  slides[slideIndex-1].classList.add("active");
+  if (dots.length >= slideIndex) {
+    dots[slideIndex-1].className += " active";
+  }
+}
+</script>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Temporizador automático de 5 segundos (5000 ms)
+let autoSlideTimer = setInterval(function() {
+  plusSlides(1);
+}, 5000);
+
+function plusSlides(n) {
+  // Reiniciar el temporizador al cambiar manualmente para evitar transiciones muy rápidas
+  clearInterval(autoSlideTimer);
+  autoSlideTimer = setInterval(function() {
+    plusSlides(1);
+  }, 5000);
+  
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  clearInterval(autoSlideTimer);
+  autoSlideTimer = setInterval(function() {
+    plusSlides(1);
+  }, 5000);
+  
   showSlides(slideIndex = n);
 }
 
