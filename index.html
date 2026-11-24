@@ -257,52 +257,312 @@
   </div>
 </div>
 </div></div>
-    
-<div id="banner-al-aire-dinamico" class="banner-al-aire-sistema" style="padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; transition: all 0.5s ease;">
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <span id="indicador-punto-estado" style="height: 12px; width: 12px; border-radius: 50%; display: inline-block; transition: all 0.5s ease;"></span>
-    <span id="texto-estado-programa" style="font-weight: bold; font-size: 0.95em; transition: all 0.5s ease;">Calculando estado de transmisión...</span>
-  </div>
-  <span style="font-size: 0.8em; background: rgba(0,0,0,0.25); padding: 4px 10px; border-radius: 12px; color: #ffffff; font-weight: bold;">Martes de 10:00 PM a 11:00 PM</span>
-</div>
-
-<script>
-(function() {
-  function verificarEstadoAlAire() {
-    const banner = document.getElementById('banner-al-aire-dinamico');
-    const punto = document.getElementById('indicador-punto-estado');
-    const texto = document.getElementById('texto-estado-programa');
-    if (!banner || !punto || !texto) return;
-    const ahoraMexico = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"}));
-    const diaSemana = ahoraMexico.getDay();
-    const hora = ahoraMexico.getHours();
-    const esMartes = (diaSemana === 2);
-    const esHorarioEmision = (hora === 22);
-    if (esMartes && esHorarioEmision) {
-      banner.style.background = "linear-gradient(90deg, #10b981 0%, #059669 100%)";
-      banner.style.border = "1px solid #34d399";
-      banner.style.boxShadow = "0 0 15px rgba(16, 185, 129, 0.4)";
-      banner.style.animation = "pulse-neon 2s infinite";
-      punto.style.backgroundColor = "#ffffff";
-      punto.style.boxShadow = "0 0 8px #ffffff";
-      texto.textContent = "🟢 ¡ESTAMOS AL AIRE EN VIVO! Escúchanos en el 104.3 FM";
-      texto.style.color = "#ffffff";
-    } else {
-      banner.style.background = "#1e293b";
-      banner.style.border = "1px solid #ef4444";
-      banner.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-      banner.style.animation = "none";
-      punto.style.backgroundColor = "#ef4444";
-      punto.style.boxShadow = "0 0 8px #ef4444";
-      texto.textContent = "🔴 Programa Fuera del Aire | Sintoniza nuestro podcast";
-      texto.style.color = "#cbd5e1";
-    }
-  }
-  document.addEventListener('DOMContentLoaded', verificarEstadoAlAire);
-  setInterval(verificarEstadoAlAire, 15000);
-})();
-</script>
-
+        <div class="sede-bloque" style="border-left: 5px solid #f59e0b; margin-top:30px;">
+          <div class="sede-header-flex">
+            <h2 class="sede-titulo">🔥 ⚡ A la Vuelta de la Esquina (Próximos 10 días)</h2>
+          </div>
+          <div class="grid-eventos">
+        
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Andrés Calamaro - Tour Agenda 1992" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 26 Nov 2026</span>
+                  <h3 class="evento-nombre">Andrés Calamaro - Tour Agenda 1992</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
+                </div>
+                <a href="https://teatrodiana.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="God Save The Queen - Gran Show de Tributo" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 28 Nov 2026</span>
+                  <h3 class="evento-nombre">God Save The Queen - Gran Show de Tributo</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://arenaguadalajara.com/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Arena Guadalajara</a></p>
+                </div>
+                <a href="https://arenaguadalajara.com/cartelera" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Baramericas Club Session" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 28 Nov 2026</span>
+                  <h3 class="evento-nombre">Baramericas Club Session</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.shazam.com/es-es/event/venue/IFF9E2B5E0B204806" target="_blank" style="color:#f59e0b; text-decoration:none;">BarAmericas (Directorio)</a></p>
+                </div>
+                <a href="https://www.shazam.com/es-es/event/venue/IFF9E2B5E0B204806" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Festival Indie GDL - Edición Especial" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 30 Nov 2026</span>
+                  <h3 class="evento-nombre">Festival Indie GDL - Edición Especial</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://c3stage.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">C3 Stage</a></p>
+                </div>
+                <a href="https://c3stage.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Sesión de Jazz Francés & Jam Abierto" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 30 Nov 2026</span>
+                  <h3 class="evento-nombre">Sesión de Jazz Francés & Jam Abierto</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.facebook.com/CentroCulturalBreton/" target="_blank" style="color:#f59e0b; text-decoration:none;">Centro Cultural Bretón A.C.</a></p>
+                </div>
+                <a href="https://www.facebook.com/CentroCulturalBreton/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Ciclo de Cine al Aire Libre e Indie" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 01 Dic 2026</span>
+                  <h3 class="evento-nombre">Ciclo de Cine al Aire Libre e Indie</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://cultura.udg.mx/" target="_blank" style="color:#f59e0b; text-decoration:none;">Cultura UdeG</a></p>
+                </div>
+                <a href="https://cultura.udg.mx/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Siddhartha - Acústico Especial GDL" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 02 Dic 2026</span>
+                  <h3 class="evento-nombre">Siddhartha - Acústico Especial GDL</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
+                </div>
+                <a href="https://teatrodiana.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Electronic Beats & Underground Techno" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 03 Dic 2026</span>
+                  <h3 class="evento-nombre">Electronic Beats & Underground Techno</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.instagram.com/foro907gdl/" target="_blank" style="color:#f59e0b; text-decoration:none;">Foro 907 Novecientos Siete</a></p>
+                </div>
+                <a href="https://www.instagram.com/foro907gdl/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://foroindependencia.com.mx/wp-content/uploads/2026/10/MEMORIA-EDDY-768x960.png" class="evento-imagen" alt="Memoria Eddy" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ Próximamente</span>
+                  <h3 class="evento-nombre">Memoria Eddy</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://foroindependencia.com.mx/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Foro Independencia</a></p>
+                </div>
+                <a href="https://foroindependencia.com.mx/cartelera" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://foroindependencia.com.mx/wp-content/uploads/2026/09/bizor-web-768x960.png" class="evento-imagen" alt="Bizor Web" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ Próximamente</span>
+                  <h3 class="evento-nombre">Bizor Web</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://foroindependencia.com.mx/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Foro Independencia</a></p>
+                </div>
+                <a href="https://foroindependencia.com.mx/cartelera" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://foroindependencia.com.mx/wp-content/uploads/2026/09/almost-web-768x960.png" class="evento-imagen" alt="Almost Web" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ Próximamente</span>
+                  <h3 class="evento-nombre">Almost Web</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://foroindependencia.com.mx/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Foro Independencia</a></p>
+                </div>
+                <a href="https://foroindependencia.com.mx/cartelera" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://foroindependencia.com.mx/wp-content/uploads/2026/08/doyle-web-768x960.png" class="evento-imagen" alt="Doyle Web" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ Próximamente</span>
+                  <h3 class="evento-nombre">Doyle Web</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://foroindependencia.com.mx/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Foro Independencia</a></p>
+                </div>
+                <a href="https://foroindependencia.com.mx/cartelera" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://foroindependencia.com.mx/wp-content/uploads/2026/10/NON-MORTIS-web-768x960.png" class="evento-imagen" alt="Non Mortis Web" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ Próximamente</span>
+                  <h3 class="evento-nombre">Non Mortis Web</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://foroindependencia.com.mx/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Foro Independencia</a></p>
+                </div>
+                <a href="https://foroindependencia.com.mx/cartelera" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://foroindependencia.com.mx/wp-content/uploads/2026/10/29-nov-web-768x960.png" class="evento-imagen" alt="29 Nov Web" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ Próximamente</span>
+                  <h3 class="evento-nombre">29 Nov Web</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://foroindependencia.com.mx/cartelera" target="_blank" style="color:#f59e0b; text-decoration:none;">Foro Independencia</a></p>
+                </div>
+                <a href="https://foroindependencia.com.mx/cartelera" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            </div></div>
+        <div class="sede-bloque" style="border-left: 5px solid #f59e0b; margin-top:30px;">
+          <div class="sede-header-flex">
+            <h2 class="sede-titulo">🔥 📅 En la Mira Semanal (Próximas semanas)</h2>
+          </div>
+          <div class="grid-eventos">
+        
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Babasónicos en Concierto GDL" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 06 Dic 2026</span>
+                  <h3 class="evento-nombre">Babasónicos en Concierto GDL</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://guanamorteatroestudio.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Guanamor</a></p>
+                </div>
+                <a href="https://guanamorteatroestudio.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="The Drums en Vivo en Guadalajara" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 08 Dic 2026</span>
+                  <h3 class="evento-nombre">The Drums en Vivo en Guadalajara</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://c3stage.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">C3 Stage</a></p>
+                </div>
+                <a href="https://c3stage.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Muestra de Teatro Contemporáneo LARVA" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 08 Dic 2026</span>
+                  <h3 class="evento-nombre">Muestra de Teatro Contemporáneo LARVA</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.facebook.com/CulturaGuadalajara/" target="_blank" style="color:#f59e0b; text-decoration:none;">Foro LARVA / Cultura Guadalajara (Facebook)</a></p>
+                </div>
+                <a href="https://www.facebook.com/CulturaGuadalajara/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Gala de Piano y Música de Cámara" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 09 Dic 2026</span>
+                  <h3 class="evento-nombre">Gala de Piano y Música de Cámara</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://conjuntosantander.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Conjunto Santander</a></p>
+                </div>
+                <a href="https://conjuntosantander.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Orquesta Filarmónica de Jalisco en Vivo" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 12 Dic 2026</span>
+                  <h3 class="evento-nombre">Orquesta Filarmónica de Jalisco en Vivo</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.palcco.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">PALCCO</a></p>
+                </div>
+                <a href="https://www.palcco.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Porter - Gira 2026" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 13 Dic 2026</span>
+                  <h3 class="evento-nombre">Porter - Gira 2026</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://guanamorteatroestudio.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Guanamor</a></p>
+                </div>
+                <a href="https://guanamorteatroestudio.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Ópera Carmen de Bizet" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 16 Dic 2026</span>
+                  <h3 class="evento-nombre">Ópera Carmen de Bizet</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://conjuntosantander.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Conjunto Santander</a></p>
+                </div>
+                <a href="https://conjuntosantander.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1484755560695-a4c7300c5c29?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Kali Uchis - Red Moon in Venus Tour" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 19 Dic 2026</span>
+                  <h3 class="evento-nombre">Kali Uchis - Red Moon in Venus Tour</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://auditorio-telmex.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Auditorio Telmex</a></p>
+                </div>
+                <a href="https://auditorio-telmex.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            </div></div>
+        <div class="sede-bloque" style="border-left: 5px solid #f59e0b; margin-top:30px;">
+          <div class="sede-header-flex">
+            <h2 class="sede-titulo">🔥 🗓️ En el Horizonte Musical (Siguientes 2 meses)</h2>
+          </div>
+          <div class="grid-eventos">
+        
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Mon Laferte - Autopoiética Tour" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 26 Dic 2026</span>
+                  <h3 class="evento-nombre">Mon Laferte - Autopoiética Tour</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://auditorio-telmex.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Auditorio Telmex</a></p>
+                </div>
+                <a href="https://auditorio-telmex.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            
+            <div class="evento-tarjeta">
+              <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Gran Concierto de Clausura Metropolitana" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
+              <div class="evento-cuerpo">
+                <div>
+                  <span class="fecha-tag">🗓️ 29 Dic 2026</span>
+                  <h3 class="evento-nombre">Gran Concierto de Clausura Metropolitana</h3>
+                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://www.facebook.com/ConciertosGuadalajara/" target="_blank" style="color:#f59e0b; text-decoration:none;">Conciertos Guadalajara (Facebook)</a></p>
+                </div>
+                <a href="https://www.facebook.com/ConciertosGuadalajara/" class="btn-ticket" target="_blank">Boletos / Info</a>
+              </div>
+            </div>
+            </div></div>
     <div class="columna-interactiva-bloque" style="grid-column: span 4;">
       <div class="sorteo-contenedor" style="border-color: #f59e0b; padding: 15px; position: relative;">
         <div class="sorteo-cabecera" style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -373,134 +633,7 @@
       .fade { animation-name: fadeAnimation; animation-duration: 1.5s; }
       @keyframes fadeAnimation { from {opacity: .4} to {opacity: 1} }
     </style>
-    
-    <div class="sede-bloque" style="border-left: 5px solid #f59e0b; margin-top:30px;"><div class="sede-header-flex"><h2 class="sede-titulo">🔥 ⚡ A la Vuelta de la Esquina (Próximos 10 días)</h2></div><div class="grid-eventos">
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Andrés Calamaro - Tour Agenda 1992" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 26 Nov 2026</span>
-                  <h3 class="evento-nombre">Andrés Calamaro - Tour Agenda 1992</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
-                </div>
-                <a href="https://teatrodiana.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Siddhartha - Acústico Especial GDL" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 02 Dic 2026</span>
-                  <h3 class="evento-nombre">Siddhartha - Acústico Especial GDL</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://teatrodiana.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Diana</a></p>
-                </div>
-                <a href="https://teatrodiana.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1484755560695-a4c7300c5c29?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Kali Uchis - Red Moon in Venus Tour" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 19 Dic 2026</span>
-                  <h3 class="evento-nombre">Kali Uchis - Red Moon in Venus Tour</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://auditorio-telmex.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Auditorio Telmex</a></p>
-                </div>
-                <a href="https://auditorio-telmex.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Mon Laferte - Autopoiética Tour" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 26 Dic 2026</span>
-                  <h3 class="evento-nombre">Mon Laferte - Autopoiética Tour</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://auditorio-telmex.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Auditorio Telmex</a></p>
-                </div>
-                <a href="https://auditorio-telmex.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Festival Indie GDL - Edición Especial" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 30 Nov 2026</span>
-                  <h3 class="evento-nombre">Festival Indie GDL - Edición Especial</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://c3stage.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">C3 Stage</a></p>
-                </div>
-                <a href="https://c3stage.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="The Drums en Vivo en Guadalajara" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 08 Dic 2026</span>
-                  <h3 class="evento-nombre">The Drums en Vivo en Guadalajara</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://c3stage.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">C3 Stage</a></p>
-                </div>
-                <a href="https://c3stage.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Babasónicos en Concierto GDL" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 06 Dic 2026</span>
-                  <h3 class="evento-nombre">Babasónicos en Concierto GDL</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://guanamorteatroestudio.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Guanamor</a></p>
-                </div>
-                <a href="https://guanamorteatroestudio.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Porter - Gira 2026" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 13 Dic 2026</span>
-                  <h3 class="evento-nombre">Porter - Gira 2026</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://guanamorteatroestudio.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Teatro Guanamor</a></p>
-                </div>
-                <a href="https://guanamorteatroestudio.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Gala de Piano y Música de Cámara" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 09 Dic 2026</span>
-                  <h3 class="evento-nombre">Gala de Piano y Música de Cámara</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://conjuntosantander.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Conjunto Santander</a></p>
-                </div>
-                <a href="https://conjuntosantander.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            
-            <div class="evento-tarjeta">
-              <img src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?auto=format&fit=crop&w=600&q=80" class="evento-imagen" alt="Ópera Carmen de Bizet" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=300&q=80'">
-              <div class="evento-cuerpo">
-                <div>
-                  <span class="fecha-tag">🗓️ 16 Dic 2026</span>
-                  <h3 class="evento-nombre">Ópera Carmen de Bizet</h3>
-                  <p style="font-size:0.75em; color:#94a3b8; margin:0 0 8px 0;">📍 Sede: <a href="https://conjuntosantander.com/" target="_blank" style="color:#f59e0b; text-decoration:none;">Conjunto Santander</a></p>
-                </div>
-                <a href="https://conjuntosantander.com/" class="btn-ticket" target="_blank">Boletos / Info</a>
-              </div>
-            </div>
-            </div></div>
-    <div class="footer-linea">
-      <p>© Gira de Conciertos 104.3Fm. Radio UdeG</p>
-      <p>Idea y producción de: Sebastián Cecillon & Asistente Inteligente IA</p>
-    </div></div>
-    <script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script>
-    </html>
+    <div class="banner-pie-container"><img src="https://blob.udgtv.com/images/banners-quienessomos/bannerradio.jpg" class="banner-pie-img" alt="Banner"></div></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p><p>Idea y producción de: Sebastián Cecillon & Asistente Inteligente IA</p></div></div><script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script></html>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const audioControl = document.getElementById('audio-reproductor-principal');
@@ -555,55 +688,5 @@ document.addEventListener('DOMContentLoaded', function() {
         audioControl.play().catch(err => console.log('Error al reproducir la promo:', err));
     }
 });
-</script>
-
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Temporizador automático de 5 segundos (5000 ms)
-let autoSlideTimer = setInterval(function() {
-  plusSlides(1);
-}, 5000);
-
-function plusSlides(n) {
-  // Reiniciar el temporizador al cambiar manualmente para evitar transiciones muy rápidas
-  clearInterval(autoSlideTimer);
-  autoSlideTimer = setInterval(function() {
-    plusSlides(1);
-  }, 5000);
-
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  clearInterval(autoSlideTimer);
-  autoSlideTimer = setInterval(function() {
-    plusSlides(1);
-  }, 5000);
-
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot-slide");
-  if (!slides.length) return;
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-    slides[i].classList.remove("active");
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  slides[slideIndex-1].classList.add("active");
-  if (dots.length >= slideIndex) {
-    dots[slideIndex-1].className += " active";
-  }
-}
 </script>
 </body></html>
