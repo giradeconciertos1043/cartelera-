@@ -272,64 +272,52 @@
     const banner = document.getElementById('banner-al-aire-dinamico');
     const punto = document.getElementById('indicador-punto-estado');
     const texto = document.getElementById('texto-estado-programa');
-
     if (!banner || !punto || !texto) return;
-
-    // Obtener la fecha y hora en la zona horaria de Guadalajara/México
     const ahoraMexico = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"}));
-
-    const diaSemana = ahoraMexico.getDay(); // 0 = Domingo, 2 = Martes, etc.
+    const diaSemana = ahoraMexico.getDay();
     const hora = ahoraMexico.getHours();
-    const minutos = ahoraMexico.getMinutes();
-
-    // Definición del horario del programa: Martes de 10:00 PM a 11:00 PM (Hora 22:00 a 22:59)
     const esMartes = (diaSemana === 2);
     const esHorarioEmision = (hora === 22);
-
     if (esMartes && esHorarioEmision) {
-      // ESTADO: AL AIRE EN VIVO (Verde)
       banner.style.background = "linear-gradient(90deg, #10b981 0%, #059669 100%)";
       banner.style.border = "1px solid #34d399";
       banner.style.boxShadow = "0 0 15px rgba(16, 185, 129, 0.4)";
       banner.style.animation = "pulse-neon 2s infinite";
-
       punto.style.backgroundColor = "#ffffff";
       punto.style.boxShadow = "0 0 8px #ffffff";
-
       texto.textContent = "🟢 ¡ESTAMOS AL AIRE EN VIVO! Escúchanos en el 104.3 FM";
       texto.style.color = "#ffffff";
     } else {
-      // ESTADO: FUERA DEL AIRE (Rojo / Oscuro)
       banner.style.background = "#1e293b";
       banner.style.border = "1px solid #ef4444";
       banner.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
       banner.style.animation = "none";
-
       punto.style.backgroundColor = "#ef4444";
       punto.style.boxShadow = "0 0 8px #ef4444";
-
       texto.textContent = "🔴 Programa Fuera del Aire | Sintoniza nuestro podcast";
       texto.style.color = "#cbd5e1";
     }
   }
-
-  // Ejecutar validación inmediata y programar bucle cada 15 segundos para mantenerlo sincronizado
   document.addEventListener('DOMContentLoaded', verificarEstadoAlAire);
   setInterval(verificarEstadoAlAire, 15000);
 })();
 </script>
 
-    <div class="columna-interactiva-bloque" style="grid-column: span 4; margin-top: 25px;">
+    <div class="columna-interactiva-bloque" style="grid-column: span 4;">
       <div class="sorteo-contenedor" style="border-color: #f59e0b; padding: 15px; position: relative;">
         <div class="sorteo-cabecera" style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; width: 100%;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <span style="font-size: 1.3em;">📸</span>
             <h3 class="sorteo-titulo" style="margin:0;">Galería de Fotos Semanal</h3>
           </div>
-          <a href="https://www.instagram.com/hecho_pacheko?evlk=ZzJrMGpuY2JlMWlv&utm_source=qr" target="_blank" style="font-size: 0.8em; background: rgba(245, 158, 11, 0.15); color: #f59e0b; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-weight: bold; border: 1px solid rgba(245,158,11, 0.3);">
+          <a href="https://www.instagram.com/hecho_pacheko?evlk=ZzJrMGpuY2JlMWlv&utm_source=qr"
+             target="_blank"
+             style="font-size: 0.8em; background: rgba(245, 158, 11, 0.15); color: #f59e0b; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-weight: bold; border: 1px solid rgba(245, 158, 11, 0.3); transition: all 0.2s ease;">
              📷 Hecho Pacheko
           </a>
         </div>
+
+        <!-- Contenedor del Carrusel -->
         <div class="slideshow-container" style="max-width: 100%; position: relative; margin: auto; overflow: hidden; border-radius: 8px;">
           
                 <div class="mySlides fade active" style="display: block;">
@@ -362,13 +350,20 @@
                   <div class="text-slide">Conciertos 22 Fbrero  (1)</div>
                 </div>
                 
-          <a class="prev-slide" onclick="plusSlides(-1)" style="cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; left: 0;">❮</a>
-          <a class="next-slide" onclick="plusSlides(1)" style="cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; right: 0;">❯</a>
+
+          <!-- Flechas de navegación -->
+          <a class="prev-slide" onclick="plusSlides(-1)" style="cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; left: 0;">❮</a>
+          <a class="next-slide" onclick="plusSlides(1)" style="cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; transition: 0.6s ease; border-radius: 3px 0 0 3px; user-select: none; right: 0;">❯</a>
         </div>
         <br>
-        <div style="text-align:center"><span class="dot-slide active" onclick="currentSlide(1)"></span><span class="dot-slide " onclick="currentSlide(2)"></span><span class="dot-slide " onclick="currentSlide(3)"></span><span class="dot-slide " onclick="currentSlide(4)"></span><span class="dot-slide " onclick="currentSlide(5)"></span><span class="dot-slide " onclick="currentSlide(6)"></span></div>
+
+        <!-- Puntos/Indicadores -->
+        <div style="text-align:center">
+          <span class="dot-slide active" onclick="currentSlide(1)"></span><span class="dot-slide " onclick="currentSlide(2)"></span><span class="dot-slide " onclick="currentSlide(3)"></span><span class="dot-slide " onclick="currentSlide(4)"></span><span class="dot-slide " onclick="currentSlide(5)"></span><span class="dot-slide " onclick="currentSlide(6)"></span>
+        </div>
       </div>
     </div>
+
     <style>
       .slideshow-container { position: relative; background: #0f172a; }
       .prev-slide:hover, .next-slide:hover { background-color: rgba(245, 158, 11, 0.8); color: #0f172a !important; }
@@ -505,7 +500,7 @@
       <p>Idea y producción de: Sebastián Cecillon & Asistente Inteligente IA</p>
     </div></div>
     <script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script>
-    
+    </html>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const audioControl = document.getElementById('audio-reproductor-principal');
@@ -611,5 +606,4 @@ function showSlides(n) {
   }
 }
 </script>
-
-    </body></html>
+</body></html>
