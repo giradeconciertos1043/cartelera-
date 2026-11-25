@@ -22,11 +22,13 @@
     gap: 10px;
     justify-content: stretch;
   }
+
+  /* REJILLA SUPERIOR RESTAURADA A DOS COLUMNAS: VIDEO KICK + CONTACTO LADO A LADO */
   .transmision-split-grid {
     background: #0f172a;
     border: 2px solid #53fc18;
     border-radius: 12px;
-    padding: 8px;
+    padding: 12px;
     margin: 0 auto 25px auto;
     overflow: hidden;
     max-width: 900px;
@@ -40,6 +42,8 @@
     flex: 2;
     position: relative;
     min-height: 250px;
+    border-radius: 8px;
+    overflow: hidden;
   }
   .kick-contacto-box {
     flex: 1;
@@ -53,10 +57,12 @@
     border: 1px dashed #53fc18;
     text-align: center;
   }
+
   @media (max-width: 768px) {
     .transmision-split-grid { flex-direction: column; }
     .kick-video-box { padding-top: 56.25%; height: 0; }
   }
+
   .logos-cabecera-flex {
     display: flex;
     align-items: center;
@@ -527,4 +533,54 @@
     setInterval(cargarMensajes, 6000); // Recarga automatizada cada 6 segundos
   });
 })();
+</script>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Temporizador automático de 5 segundos (5000 ms)
+let autoSlideTimer = setInterval(function() {
+  plusSlides(1);
+}, 5000);
+
+function plusSlides(n) {
+  // Reiniciar el temporizador al cambiar manualmente para evitar transiciones muy rápidas
+  clearInterval(autoSlideTimer);
+  autoSlideTimer = setInterval(function() {
+    plusSlides(1);
+  }, 5000);
+
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  clearInterval(autoSlideTimer);
+  autoSlideTimer = setInterval(function() {
+    plusSlides(1);
+  }, 5000);
+
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot-slide");
+  if (!slides.length) return;
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    slides[i].classList.remove("active");
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  slides[slideIndex-1].classList.add("active");
+  if (dots.length >= slideIndex) {
+    dots[slideIndex-1].className += " active";
+  }
+}
 </script>
