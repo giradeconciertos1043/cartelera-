@@ -540,171 +540,6 @@
       </div>
     </div>
     <div class="banner-pie-container"><img src="https://blob.udgtv.com/images/banners-quienessomos/bannerradio.jpg" class="banner-pie-img" alt="Banner"></div><div class="footer-linea"><p>© Gira de Conciertos 104.3Fm. Radio UdeG</p><p>Idea y producción de: Sebastián Cecillon & Asistente Inteligente IA</p></div></div><script>function moverReloj() {  const ahora = new Date();  const opciones = { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };  const horaFormateada = ahora.toLocaleTimeString('es-MX', opciones);  const elemento = document.getElementById('reloj-dinamico-gdl');  if(elemento) { elemento.textContent = horaFormateada; }}setInterval(moverReloj, 1000);window.onload = moverReloj;</script>
-    
-<script>
-(function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    const btnEnviar = document.getElementById('btn-enviar-cortesia');
-    const mensajeEstado = document.getElementById('mensaje-estado-cortesias');
-    const formCortesias = document.getElementById('form-sorteo-sheets');
-
-    if (btnEnviar && !btnEnviar.dataset.listenerActive) {
-      btnEnviar.dataset.listenerActive = "true";
-
-      btnEnviar.addEventListener('click', async function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const nombreVal = document.getElementById('part-nombre').value.trim();
-        const celularVal = document.getElementById('part-celular').value.trim();
-        const comentarioVal = document.getElementById('part-comentario').value.trim();
-
-        if (!nombreVal || !celularVal || !comentarioVal) {
-          alert("Por favor llena todos los campos del formulario de cortesías.");
-          return;
-        }
-
-        if (btnEnviar.disabled) return;
-
-        btnEnviar.disabled = true;
-        btnEnviar.textContent = "Registrando...";
-        mensajeEstado.style.color = "#f59e0b";
-        mensajeEstado.textContent = "⏳ Enviando tus datos a la lista de cortesías...";
-
-        const payload = {
-          tipo: "sorteo",
-          nombre: nombreVal,
-          sorteo: "Baramericas Club Session",
-          celular: celularVal,
-          comentario: comentarioVal
-        };
-
-        try {
-          const response = await fetch("https://script.google.com/macros/s/AKfycbxqEiz9ESI8vUuDceg53lw_E_fHcodtgMdkXoPwVqIhe_584L7FElXiI6m3ss3o_G1nWQ/exec", {
-            redirect: "follow",
-            method: "POST",
-            headers: {
-              'Content-Type': 'text/plain;charset=utf-8'
-            },
-            body: JSON.stringify(payload)
-          });
-
-          const resData = await response.json();
-
-          if (resData.status === "success") {
-            mensajeEstado.style.color = "#10b981";
-            mensajeEstado.textContent = "🟢 ¡Registrado con éxito! Mucha suerte.";
-            if (formCortesias) formCortesias.reset();
-          } else {
-            mensajeEstado.style.color = "#ef4444";
-            mensajeEstado.textContent = "❌ Error al registrar: " + resData.message;
-          }
-        } catch (err) {
-          console.error(err);
-          // Captura de éxito indirecta o fallback
-          mensajeEstado.style.color = "#10b981";
-          mensajeEstado.textContent = "🟢 ¡Registro procesado con éxito!";
-          if (formCortesias) formCortesias.reset();
-        } finally {
-          btnEnviar.disabled = false;
-          btnEnviar.textContent = "Registrarme por Cortesías 🚀";
-        }
-      });
-    }
-  });
-})();
-</script>
-
-    
-<script>
-(function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    const btnEnviarChat = document.getElementById('btn-enviar-chat');
-    const chatBox = document.getElementById('chat-mensajes-box');
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbxqEiz9ESI8vUuDceg53lw_E_fHcodtgMdkXoPwVqIhe_584L7FElXiI6m3ss3o_G1nWQ/exec";
-
-    // Función para obtener y listar mensajes en pantalla
-    async function cargarMensajes() {
-      try {
-        const response = await fetch(scriptUrl + "?tipo=obtener_chat", {
-          method: 'GET',
-          mode: 'cors'
-        });
-        const resData = await response.json();
-
-        if (resData.status === "success" && Array.isArray(resData.mensajes)) {
-          if (resData.mensajes.length === 0) {
-            chatBox.innerHTML = '<div style="color: #94a3b8; text-align: center; margin-top: 40px;">¡Sé el primero en iniciar la conversación! 😊</div>';
-            return;
-          }
-
-          chatBox.innerHTML = "";
-          resData.mensajes.forEach(msg => {
-            const msgElement = document.createElement('div');
-            msgElement.style.borderBottom = "1px solid #1e293b";
-            msgElement.style.paddingBottom = "4px";
-            msgElement.innerHTML = `<strong style="color: #3b82f6;">${msg.nombre}</strong> <span style="color: #64748b; font-size: 0.8em;">${msg.hora}</span><br><span style="color: #f1f5f9;">${msg.texto}</span>`;
-            chatBox.appendChild(msgElement);
-          });
-
-          chatBox.scrollTop = chatBox.scrollHeight;
-        }
-      } catch (err) {
-        console.error("Error cargando mensajes del chat:", err);
-      }
-    }
-
-    // Envío seguro utilizando POST estándar de formulario
-    if (btnEnviarChat) {
-      btnEnviarChat.addEventListener('click', async function(e) {
-        e.preventDefault();
-
-        const nombre = document.getElementById('chat-user-name').value.trim();
-        const texto = document.getElementById('chat-user-msg').value.trim();
-
-        if (!nombre || !texto) {
-          alert("Por favor escribe tu nombre y un mensaje antes de enviar.");
-          return;
-        }
-
-        btnEnviarChat.disabled = true;
-        btnEnviarChat.textContent = "Enviando...";
-
-        // Creamos parámetros de formulario tradicionales para asegurar compatibilidad CORS total
-        const urlParams = new URLSearchParams();
-        urlParams.append('tipo', 'chat_mensaje');
-        urlParams.append('nombre', nombre);
-        urlParams.append('texto', texto);
-
-        try {
-          const response = await fetch(scriptUrl, {
-            method: "POST",
-            mode: "no-cors", // Permite saltarse bloqueos pre-flight de navegadores
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: urlParams
-          });
-
-          // Al usar no-cors no podemos leer la respuesta directa, asumimos éxito inmediato y limpiamos el campo
-          document.getElementById('chat-user-msg').value = "";
-          setTimeout(cargarMensajes, 800); // Pequeño retraso para dar tiempo a la escritura en Sheet
-        } catch (err) {
-          console.error("Error en envío:", err);
-        } finally {
-          btnEnviarChat.disabled = false;
-          btnEnviarChat.textContent = "Enviar Mensaje 🚀";
-        }
-      });
-    }
-
-    cargarMensajes();
-    setInterval(cargarMensajes, 6000); // Recarga automatizada cada 6 segundos
-  });
-})();
-</script>
-
-    
 <script>
 (function() {
   document.addEventListener('DOMContentLoaded', function() {
@@ -809,20 +644,215 @@
 })();
 </script>
 
-    <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
-    let autoSlideTimer = setInterval(() => { plusSlides(1); }, 5000);
-    function plusSlides(n) { clearInterval(autoSlideTimer); autoSlideTimer = setInterval(() => { plusSlides(1); }, 5000); showSlides(slideIndex += n); }
-    function currentSlide(n) { clearInterval(autoSlideTimer); autoSlideTimer = setInterval(() => { plusSlides(1); }, 5000); showSlides(slideIndex = n); }
-    function showSlides(n) {
-      let i; let slides = document.getElementsByClassName("mySlides"); let dots = document.getElementsByClassName("dot-slide");
-      if (!slides.length) return;
-      if (n > slides.length) {slideIndex = 1} if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-      for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
-      slides[slideIndex-1].style.display = "block";
-      if (dots.length >= slideIndex) dots[slideIndex-1].className += " active";
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const btnEnviar = document.getElementById('btn-enviar-cortesia');
+    const mensajeEstado = document.getElementById('mensaje-estado-cortesias');
+    const formCortesias = document.getElementById('form-sorteo-sheets');
+
+    if (btnEnviar && !btnEnviar.dataset.listenerActive) {
+      btnEnviar.dataset.listenerActive = "true";
+
+      btnEnviar.addEventListener('click', async function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const nombreVal = document.getElementById('part-nombre').value.trim();
+        const celularVal = document.getElementById('part-celular').value.trim();
+        const comentarioVal = document.getElementById('part-comentario').value.trim();
+
+        if (!nombreVal || !celularVal || !comentarioVal) {
+          alert("Por favor llena todos los campos del formulario de cortesías.");
+          return;
+        }
+
+        if (btnEnviar.disabled) return;
+
+        btnEnviar.disabled = true;
+        btnEnviar.textContent = "Registrando...";
+        mensajeEstado.style.color = "#f59e0b";
+        mensajeEstado.textContent = "⏳ Enviando tus datos a la lista de cortesías...";
+
+        const payload = {
+          tipo: "sorteo",
+          nombre: nombreVal,
+          sorteo: "Baramericas Club Session",
+          celular: celularVal,
+          comentario: comentarioVal
+        };
+
+        try {
+          const response = await fetch("https://script.google.com/macros/s/AKfycbxqEiz9ESI8vUuDceg53lw_E_fHcodtgMdkXoPwVqIhe_584L7FElXiI6m3ss3o_G1nWQ/exec", {
+            redirect: "follow",
+            method: "POST",
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const resData = await response.json();
+
+          if (resData.status === "success") {
+            mensajeEstado.style.color = "#10b981";
+            mensajeEstado.textContent = "🟢 ¡Registrado con éxito! Mucha suerte.";
+            if (formCortesias) formCortesias.reset();
+          } else {
+            mensajeEstado.style.color = "#ef4444";
+            mensajeEstado.textContent = "❌ Error al registrar: " + resData.message;
+          }
+        } catch (err) {
+          console.error(err);
+          // Captura de éxito indirecta o fallback
+          mensajeEstado.style.color = "#10b981";
+          mensajeEstado.textContent = "🟢 ¡Registro procesado con éxito!";
+          if (formCortesias) formCortesias.reset();
+        } finally {
+          btnEnviar.disabled = false;
+          btnEnviar.textContent = "Registrarme por Cortesías 🚀";
+        }
+      });
     }
-    </script>
-    </body></html></div>
+  });
+})();
+</script>
+
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const btnEnviarChat = document.getElementById('btn-enviar-chat');
+    const chatBox = document.getElementById('chat-mensajes-box');
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbxqEiz9ESI8vUuDceg53lw_E_fHcodtgMdkXoPwVqIhe_584L7FElXiI6m3ss3o_G1nWQ/exec";
+
+    // Función para obtener y listar mensajes en pantalla
+    async function cargarMensajes() {
+      try {
+        const response = await fetch(scriptUrl + "?tipo=obtener_chat", {
+          method: 'GET',
+          mode: 'cors'
+        });
+        const resData = await response.json();
+
+        if (resData.status === "success" && Array.isArray(resData.mensajes)) {
+          if (resData.mensajes.length === 0) {
+            chatBox.innerHTML = '<div style="color: #94a3b8; text-align: center; margin-top: 40px;">¡Sé el primero en iniciar la conversación! 😊</div>';
+            return;
+          }
+
+          chatBox.innerHTML = "";
+          resData.mensajes.forEach(msg => {
+            const msgElement = document.createElement('div');
+            msgElement.style.borderBottom = "1px solid #1e293b";
+            msgElement.style.paddingBottom = "4px";
+            msgElement.innerHTML = `<strong style="color: #3b82f6;">${msg.nombre}</strong> <span style="color: #64748b; font-size: 0.8em;">${msg.hora}</span><br><span style="color: #f1f5f9;">${msg.texto}</span>`;
+            chatBox.appendChild(msgElement);
+          });
+
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }
+      } catch (err) {
+        console.error("Error cargando mensajes del chat:", err);
+      }
+    }
+
+    // Envío seguro utilizando POST estándar de formulario
+    if (btnEnviarChat) {
+      btnEnviarChat.addEventListener('click', async function(e) {
+        e.preventDefault();
+
+        const nombre = document.getElementById('chat-user-name').value.trim();
+        const texto = document.getElementById('chat-user-msg').value.trim();
+
+        if (!nombre || !texto) {
+          alert("Por favor escribe tu nombre y un mensaje antes de enviar.");
+          return;
+        }
+
+        btnEnviarChat.disabled = true;
+        btnEnviarChat.textContent = "Enviando...";
+
+        // Creamos parámetros de formulario tradicionales para asegurar compatibilidad CORS total
+        const urlParams = new URLSearchParams();
+        urlParams.append('tipo', 'chat_mensaje');
+        urlParams.append('nombre', nombre);
+        urlParams.append('texto', texto);
+
+        try {
+          const response = await fetch(scriptUrl, {
+            method: "POST",
+            mode: "no-cors", // Permite saltarse bloqueos pre-flight de navegadores
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: urlParams
+          });
+
+          // Al usar no-cors no podemos leer la respuesta directa, asumimos éxito inmediato y limpiamos el campo
+          document.getElementById('chat-user-msg').value = "";
+          setTimeout(cargarMensajes, 800); // Pequeño retraso para dar tiempo a la escritura en Sheet
+        } catch (err) {
+          console.error("Error en envío:", err);
+        } finally {
+          btnEnviarChat.disabled = false;
+          btnEnviarChat.textContent = "Enviar Mensaje 🚀";
+        }
+      });
+    }
+
+    cargarMensajes();
+    setInterval(cargarMensajes, 6000); // Recarga automatizada cada 6 segundos
+  });
+})();
+</script>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Temporizador automático de 5 segundos (5000 ms)
+let autoSlideTimer = setInterval(function() {
+  plusSlides(1);
+}, 5000);
+
+function plusSlides(n) {
+  // Reiniciar el temporizador al cambiar manualmente para evitar transiciones muy rápidas
+  clearInterval(autoSlideTimer);
+  autoSlideTimer = setInterval(function() {
+    plusSlides(1);
+  }, 5000);
+
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  clearInterval(autoSlideTimer);
+  autoSlideTimer = setInterval(function() {
+    plusSlides(1);
+  }, 5000);
+
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot-slide");
+  if (!slides.length) return;
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    slides[i].classList.remove("active");
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  slides[slideIndex-1].classList.add("active");
+  if (dots.length >= slideIndex) {
+    dots[slideIndex-1].className += " active";
+  }
+}
+</script>
+</body></html></div>
